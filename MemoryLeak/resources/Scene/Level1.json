@@ -51,7 +51,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         }
     },
     {
@@ -106,7 +108,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         }
     },
     {
@@ -161,7 +165,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         }
     },
     {
@@ -210,7 +216,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -263,7 +271,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -316,7 +326,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -369,7 +381,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -434,7 +448,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -498,8 +514,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -563,8 +581,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -619,17 +639,19 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
+            "path": "Walla_behind closed doors_Loop_1",
+            "toPlay": true,
+            "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
             "isMute": false,
-            "isLoop": false,
+            "isLoop": true,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 2.0
         },
         "ShadowCaster": {
             "centerOffsets": [
@@ -694,7 +716,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png",
-            "layer": 43
+            "layer": 466
         },
         "Animation": {
             "sheets": [
@@ -885,7 +907,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Script": {
             "name": "PlayerScript"
@@ -960,7 +984,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Lighthouse_spritesheet.png",
-            "layer": 36
+            "layer": 544
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -992,17 +1016,19 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
+            "path": "02.Night_Forest_Field_Stars_Loop",
+            "toPlay": true,
+            "volume": 0.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
             "isMute": false,
-            "isLoop": false,
+            "isLoop": true,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": true,
+            "spacialDistance": 0.699999988079071,
+            "spacialRatio": 0.800000011920929
         },
         "ShadowCaster": {
             "centerOffsets": [
@@ -1283,7 +1309,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree4_Spritesheet.png",
-            "layer": 700
+            "layer": 522
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -1324,8 +1350,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": true,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [
@@ -1510,7 +1538,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ParticleSystem": {
             "mParticleInfo": {
@@ -1574,7 +1604,7 @@
             },
             "sprite": 2,
             "texture": "",
-            "layer": 48
+            "layer": 411
         },
         "Animation": {
             "sheets": [
@@ -1701,7 +1731,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Script": {
             "name": "EnemyController"
@@ -1929,7 +1961,9 @@
             "isLoop": true,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": true
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "MovementAI": {
             "run": true,
@@ -2230,7 +2264,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         }
     },
     {
@@ -2281,17 +2317,19 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
+            "path": "Walla_behind closed doors_Loop_2",
+            "toPlay": true,
+            "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
             "isMute": false,
-            "isLoop": false,
+            "isLoop": true,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 2.0
         },
         "ShadowCaster": {
             "centerOffsets": [
@@ -2377,17 +2415,19 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
+            "path": "Walla_behind closed doors_Loop_1",
+            "toPlay": true,
+            "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
             "isMute": false,
-            "isLoop": false,
+            "isLoop": true,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 2.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -2421,7 +2461,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region1_Tree5_Spritesheet.png",
-            "layer": 45
+            "layer": 533
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -2462,8 +2502,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": true,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [
@@ -2914,7 +2956,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Script": {
             "name": "SwitchToLevel2"
@@ -2969,7 +3013,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ParticleSystem": {
             "mParticleInfo": {
@@ -3033,7 +3079,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building6_spritesheet.png",
-            "layer": 64
+            "layer": 577
         },
         "SheetAnimation": {
             "frameCount": 6,
@@ -3067,7 +3113,7 @@
         "Audio": {
             "path": "Waterfall",
             "toPlay": true,
-            "volume": 1.0,
+            "volume": 0.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
@@ -3075,7 +3121,9 @@
             "isLoop": true,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": true
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 0.699999988079071
         },
         "ShadowCaster": {
             "centerOffsets": [
@@ -3192,7 +3240,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ParticleSystem": {
             "mParticleInfo": {
@@ -3278,7 +3328,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ParticleSystem": {
             "mParticleInfo": {
@@ -3483,7 +3535,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
+            "path": "Level_Transition",
             "toPlay": false,
             "volume": 0.5,
             "volumeMod": 1.0,
@@ -3492,8 +3544,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         }
     },
     {
@@ -3542,7 +3596,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -3595,7 +3651,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -3648,7 +3706,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -3701,7 +3761,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -3754,7 +3816,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -3807,7 +3871,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -3860,7 +3926,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -3913,7 +3981,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -3966,7 +4036,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4019,7 +4091,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4072,7 +4146,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4125,7 +4201,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4178,7 +4256,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4231,7 +4311,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4284,7 +4366,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4337,7 +4421,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4390,7 +4476,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4443,7 +4531,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4496,7 +4586,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4549,7 +4641,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4602,7 +4696,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4655,7 +4751,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4708,7 +4806,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4761,7 +4861,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4814,7 +4916,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4867,7 +4971,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4920,7 +5026,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4973,7 +5081,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5026,7 +5136,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5079,7 +5191,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5132,7 +5246,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5185,7 +5301,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5238,7 +5356,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5291,7 +5411,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5344,7 +5466,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5397,7 +5521,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5450,7 +5576,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5503,7 +5631,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5556,7 +5686,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5609,7 +5741,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5662,7 +5796,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5715,7 +5851,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5768,7 +5906,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5821,7 +5961,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5874,7 +6016,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5927,7 +6071,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -5980,7 +6126,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6033,7 +6181,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6086,7 +6236,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6139,7 +6291,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6192,7 +6346,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6245,7 +6401,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6298,7 +6456,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6351,7 +6511,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6404,7 +6566,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6457,7 +6621,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6510,7 +6676,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6563,7 +6731,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6616,7 +6786,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6669,7 +6841,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6722,7 +6896,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6775,7 +6951,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6828,7 +7006,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6881,7 +7061,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6934,7 +7116,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -6987,7 +7171,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7040,7 +7226,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7093,7 +7281,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7146,7 +7336,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7199,7 +7391,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7252,7 +7446,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7305,7 +7501,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7358,7 +7556,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7411,7 +7611,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7464,7 +7666,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7517,7 +7721,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7570,7 +7776,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7623,7 +7831,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7676,7 +7886,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7729,7 +7941,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7782,7 +7996,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7835,7 +8051,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7888,7 +8106,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7941,7 +8161,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7994,7 +8216,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8047,7 +8271,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8100,7 +8326,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8153,7 +8381,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8206,7 +8436,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8259,7 +8491,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8312,7 +8546,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8365,7 +8601,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8418,7 +8656,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8471,7 +8711,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8524,7 +8766,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8577,7 +8821,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8630,7 +8876,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8683,7 +8931,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8736,7 +8986,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8789,7 +9041,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8842,7 +9096,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8895,7 +9151,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -8948,7 +9206,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9001,7 +9261,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9054,7 +9316,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9107,7 +9371,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9160,7 +9426,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9213,7 +9481,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9266,7 +9536,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9319,7 +9591,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9372,7 +9646,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9425,7 +9701,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9478,7 +9756,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9531,7 +9811,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9584,7 +9866,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9648,8 +9932,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9714,7 +10000,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9778,8 +10066,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9844,7 +10134,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9909,7 +10201,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -9962,7 +10256,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10017,7 +10313,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
+            "path": "Tree_Collision",
             "toPlay": false,
             "volume": 0.5,
             "volumeMod": 1.0,
@@ -10026,8 +10322,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10091,8 +10389,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10145,7 +10445,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10198,7 +10500,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10251,7 +10555,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10316,7 +10622,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10381,7 +10689,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10434,7 +10744,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10487,7 +10799,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10552,7 +10866,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10617,7 +10933,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10682,7 +11000,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10747,7 +11067,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10800,7 +11122,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10853,7 +11177,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10906,7 +11232,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -10959,7 +11287,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11012,7 +11342,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11065,7 +11397,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11118,7 +11452,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11171,7 +11507,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11224,7 +11562,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11277,7 +11617,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11330,7 +11672,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11383,7 +11727,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11436,7 +11782,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11489,7 +11837,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11542,7 +11892,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11595,7 +11947,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11648,7 +12002,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11700,8 +12056,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11754,7 +12112,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11807,7 +12167,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11860,7 +12222,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11913,7 +12277,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -11966,7 +12332,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12018,8 +12386,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12072,7 +12442,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12125,7 +12497,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12178,7 +12552,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12231,7 +12607,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12284,7 +12662,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12337,7 +12717,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12390,7 +12772,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12443,7 +12827,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12496,7 +12882,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12549,7 +12937,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12592,7 +12982,7 @@
             "timeToFrameSwap": 0.13333360850811005
         },
         "Audio": {
-            "path": "Collision_Finalized",
+            "path": "Tree_Collision",
             "toPlay": false,
             "volume": 0.5,
             "volumeMod": 1.0,
@@ -12601,8 +12991,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12655,7 +13047,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12708,7 +13102,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12761,7 +13157,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12814,7 +13212,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12867,7 +13267,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12920,7 +13322,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12973,7 +13377,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13026,7 +13432,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13079,7 +13487,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13132,7 +13542,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13185,7 +13597,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13238,7 +13652,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13291,7 +13707,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13344,7 +13762,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13397,7 +13817,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13450,7 +13872,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13503,7 +13927,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13556,7 +13982,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13609,7 +14037,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13662,7 +14092,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13715,7 +14147,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13768,7 +14202,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13821,7 +14257,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13874,7 +14312,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13927,7 +14367,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13980,7 +14422,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14033,7 +14477,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14086,7 +14532,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14139,7 +14587,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14192,7 +14642,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14245,7 +14697,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14298,7 +14752,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14351,7 +14807,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14404,7 +14862,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14457,7 +14917,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14510,7 +14972,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14563,7 +15027,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14616,7 +15082,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14669,7 +15137,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14722,7 +15192,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14775,7 +15247,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14828,7 +15302,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14881,7 +15357,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14934,7 +15412,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14987,7 +15467,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15040,7 +15522,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15093,7 +15577,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15146,7 +15632,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15199,7 +15687,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15252,7 +15742,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15307,7 +15799,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
+            "path": "Tree_Collision",
             "toPlay": false,
             "volume": 0.5,
             "volumeMod": 1.0,
@@ -15316,8 +15808,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15370,7 +15864,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15423,7 +15919,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15476,7 +15974,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15529,7 +16029,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15582,7 +16084,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15635,7 +16139,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15688,7 +16194,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15741,7 +16249,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15794,7 +16304,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15847,7 +16359,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15900,7 +16414,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -15953,7 +16469,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16018,7 +16536,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16083,7 +16603,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16148,7 +16670,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16203,7 +16727,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
+            "path": "Tree_Collision",
             "toPlay": false,
             "volume": 0.5,
             "volumeMod": 1.0,
@@ -16212,8 +16736,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16278,7 +16804,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16333,7 +16861,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
+            "path": "Tree_Collision",
             "toPlay": false,
             "volume": 0.5,
             "volumeMod": 1.0,
@@ -16342,8 +16870,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16365,7 +16895,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 830.0,
-                "Y": -1410.0
+                "Y": -1400.0
             }
         },
         "Sprite": {
@@ -16398,7 +16928,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
+            "path": "Tree_Collision",
             "toPlay": false,
             "volume": 0.5,
             "volumeMod": 1.0,
@@ -16407,8 +16937,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16473,7 +17005,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16528,7 +17062,7 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
+            "path": "Tree_Collision",
             "toPlay": false,
             "volume": 0.5,
             "volumeMod": 1.0,
@@ -16537,8 +17071,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16603,7 +17139,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16668,7 +17206,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16721,7 +17261,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16764,7 +17306,7 @@
             "timeToFrameSwap": 0.05000000447034836
         },
         "Audio": {
-            "path": "Collision_Finalized",
+            "path": "Tree_Collision",
             "toPlay": false,
             "volume": 0.5,
             "volumeMod": 1.0,
@@ -16773,8 +17315,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16827,7 +17371,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16880,7 +17426,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16933,7 +17481,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16986,7 +17536,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17039,7 +17591,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17092,7 +17646,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17145,7 +17701,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17198,7 +17756,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17251,7 +17811,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17304,7 +17866,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17357,7 +17921,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17410,7 +17976,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17463,7 +18031,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17516,7 +18086,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17569,7 +18141,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17622,7 +18196,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17675,7 +18251,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17728,7 +18306,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17781,7 +18361,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17834,7 +18416,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17887,7 +18471,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17940,7 +18526,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -17993,7 +18581,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18046,7 +18636,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18099,7 +18691,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18152,7 +18746,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18205,7 +18801,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18258,7 +18856,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18311,7 +18911,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18364,7 +18966,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18417,7 +19021,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18470,7 +19076,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18523,7 +19131,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18576,7 +19186,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18629,7 +19241,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18682,7 +19296,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18735,7 +19351,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18788,7 +19406,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18841,7 +19461,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18894,7 +19516,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -18947,7 +19571,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19000,7 +19626,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19053,7 +19681,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19106,7 +19736,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19159,7 +19791,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19212,7 +19846,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19265,7 +19901,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19318,7 +19956,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19371,7 +20011,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19424,7 +20066,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19477,7 +20121,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19530,7 +20176,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19583,7 +20231,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19636,7 +20286,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19689,7 +20341,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19742,7 +20396,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19795,7 +20451,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19848,7 +20506,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19901,7 +20561,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -19954,7 +20616,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20007,7 +20671,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20060,7 +20726,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20113,7 +20781,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20166,7 +20836,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20219,7 +20891,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20272,7 +20946,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20325,7 +21001,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20378,7 +21056,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20431,7 +21111,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20484,7 +21166,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20537,7 +21221,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20590,7 +21276,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20643,7 +21331,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20696,7 +21386,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20749,7 +21441,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20802,7 +21496,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20855,7 +21551,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20908,7 +21606,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -20961,7 +21661,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21014,7 +21716,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21067,7 +21771,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21120,7 +21826,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21173,7 +21881,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21226,7 +21936,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21279,7 +21991,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21332,7 +22046,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21385,7 +22101,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21438,7 +22156,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21491,7 +22211,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21544,7 +22266,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21597,7 +22321,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21650,7 +22376,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21703,7 +22431,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21756,7 +22486,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21809,7 +22541,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21862,7 +22596,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21915,7 +22651,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -21968,7 +22706,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22021,7 +22761,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22074,7 +22816,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22127,7 +22871,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22180,7 +22926,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22233,7 +22981,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22286,7 +23036,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22339,7 +23091,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22392,7 +23146,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22445,7 +23201,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22498,7 +23256,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22551,7 +23311,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22604,7 +23366,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22669,7 +23433,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22734,7 +23500,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22799,7 +23567,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22864,7 +23634,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22929,7 +23701,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -22994,7 +23768,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23059,7 +23835,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23124,7 +23902,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23189,7 +23969,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23254,7 +24036,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23319,7 +24103,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23372,7 +24158,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23425,7 +24213,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23478,7 +24268,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23531,7 +24323,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23584,7 +24378,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23637,7 +24433,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23690,7 +24488,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23743,7 +24543,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23796,7 +24598,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23849,7 +24653,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23902,7 +24708,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -23955,7 +24763,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24008,7 +24818,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24061,7 +24873,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24114,7 +24928,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24167,7 +24983,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24220,7 +25038,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24273,7 +25093,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24326,7 +25148,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24379,7 +25203,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24432,7 +25258,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24485,7 +25313,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24538,7 +25368,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24591,7 +25423,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24644,7 +25478,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24697,7 +25533,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24750,7 +25588,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24803,7 +25643,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24856,7 +25698,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24909,7 +25753,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -24962,7 +25808,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25015,7 +25863,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25068,7 +25918,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25121,7 +25973,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25174,7 +26028,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25227,7 +26083,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25280,7 +26138,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25333,7 +26193,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25386,7 +26248,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25439,7 +26303,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25492,7 +26358,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25545,7 +26413,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25598,7 +26468,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25651,7 +26523,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25704,7 +26578,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25757,7 +26633,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25810,7 +26688,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25863,7 +26743,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25916,7 +26798,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -25969,7 +26853,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26022,7 +26908,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26075,7 +26963,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26128,7 +27018,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26181,7 +27073,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26234,7 +27128,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26287,7 +27183,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26340,7 +27238,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26393,7 +27293,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26446,7 +27348,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26499,7 +27403,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26552,7 +27458,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26605,7 +27513,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26658,7 +27568,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26711,7 +27623,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26764,7 +27678,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26817,7 +27733,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26870,7 +27788,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26923,7 +27843,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -26976,7 +27898,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27029,7 +27953,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27082,7 +28008,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27135,7 +28063,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27188,7 +28118,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27241,7 +28173,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27294,7 +28228,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27347,7 +28283,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27400,7 +28338,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27453,7 +28393,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27506,7 +28448,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27559,7 +28503,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27612,7 +28558,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27665,7 +28613,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27718,7 +28668,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27771,7 +28723,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27824,7 +28778,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27877,7 +28833,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27930,7 +28888,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -27983,7 +28943,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28048,7 +29010,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28101,7 +29065,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28154,7 +29120,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28207,7 +29175,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28260,7 +29230,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28313,7 +29285,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28366,7 +29340,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28419,7 +29395,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28472,7 +29450,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28525,7 +29505,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28578,7 +29560,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28631,7 +29615,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28684,7 +29670,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28737,7 +29725,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28790,7 +29780,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28843,7 +29835,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28896,7 +29890,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -28949,7 +29945,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29002,7 +30000,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29055,7 +30055,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29108,7 +30110,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29161,7 +30165,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29214,7 +30220,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29267,7 +30275,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29320,7 +30330,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29373,7 +30385,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29426,7 +30440,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29479,7 +30495,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29532,7 +30550,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29585,7 +30605,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29637,8 +30659,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29691,7 +30715,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29744,7 +30770,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29797,7 +30825,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29849,8 +30879,10 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29903,7 +30935,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -29956,7 +30990,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -30009,7 +31045,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -30062,7 +31100,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],

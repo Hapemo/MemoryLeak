@@ -36,7 +36,7 @@ void AudioManager::Init()
     }
     mChannel.resize((int)E_AUDIO_CHANNEL::MAX);
     songVol = 0.05f;
-    bgmVol=0.6f;
+    bgmVol=0.1f;
     sfxVol=1.f;
     ///LoadSound();
 }
@@ -247,7 +247,10 @@ void AudioManager::PlaySound(const Entity& e)
 
         float spacial = (max.Magnitude() - distance.Magnitude()) / max.Magnitude();
         spacial = spacial < 0.f ? 0.f : spacial;
-        vol = vol * (1.f - e.GetComponent<Audio>().spacialRatio) + spacial * e.GetComponent<Audio>().spacialRatio;
+        if (e.GetComponent<Audio>().spacialRatio > 1.0f)
+            vol = spacial * e.GetComponent<Audio>().spacialRatio;
+        else
+            vol = vol * (1.f - e.GetComponent<Audio>().spacialRatio) + spacial * e.GetComponent<Audio>().spacialRatio;
         mChannel[channel]->setVolume(vol * sfxVol);
     }
     else

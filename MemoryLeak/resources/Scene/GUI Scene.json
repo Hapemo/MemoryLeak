@@ -273,6 +273,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -315,6 +318,10 @@
             "spriteORtext": 0,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -385,6 +392,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -427,6 +437,10 @@
             "spriteORtext": 0,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -497,6 +511,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -539,6 +556,10 @@
             "spriteORtext": 0,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -627,6 +648,10 @@
             "spriteORtext": 1,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -706,6 +731,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -748,6 +776,10 @@
             "spriteORtext": 0,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -818,6 +850,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -860,6 +895,10 @@
             "spriteORtext": 0,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -930,6 +969,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -972,6 +1014,10 @@
             "spriteORtext": 0,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -1060,6 +1106,10 @@
             "spriteORtext": 1,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -1421,7 +1471,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         }
     },
     {
@@ -1464,7 +1516,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         }
     },
     {
@@ -1537,7 +1591,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Script": {
             "name": "MemoryFragmentExpand"
@@ -1555,6 +1611,9 @@
             "acceleration": 0.0,
             "moveOnHover": true,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -1969,6 +2028,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -2011,6 +2073,10 @@
             "spriteORtext": 0,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -2081,6 +2147,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -2123,6 +2192,10 @@
             "spriteORtext": 0,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -2193,6 +2266,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -2235,6 +2311,10 @@
             "spriteORtext": 0,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -2305,6 +2385,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -2347,6 +2430,10 @@
             "spriteORtext": 0,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -2417,6 +2504,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -2459,6 +2549,10 @@
             "spriteORtext": 0,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -2529,6 +2623,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -2571,6 +2668,10 @@
             "spriteORtext": 0,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -2596,6 +2697,99 @@
                         "r": 0,
                         "g": 0,
                         "b": 0,
+                        "a": 0
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "General": {
+            "name": "overlay",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 1600.0,
+                "Y": 900.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Background\\overlay.png",
+            "layer": 100
+        },
+        "ColorAI": {
+            "run": false,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "spriteORtext": 0,
+            "changeOnHover": false,
+            "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
+            "targets": [
+                {
+                    "time": 0.2,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 0
+                    }
+                },
+                {
+                    "time": 0.7,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 0.5,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 0
+                    }
+                },
+                {
+                    "time": 0.3,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 0.2,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
                         "a": 0
                     }
                 }

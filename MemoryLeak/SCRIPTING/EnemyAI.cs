@@ -37,6 +37,7 @@ namespace BonVoyage
         private int EnemyId;
         private int HpBarId;
         private int toggleMapID;
+        private int OverlayId;
         private string currlevel;
         private float enemySpeed;
         private float rainSpeed;
@@ -59,7 +60,7 @@ namespace BonVoyage
         public void Init(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-
+            OverlayId = VI.Entity.GetId("overlay");
             EnemyId = VI.Entity.GetId("Enemy");
             PlayerId = VI.Entity.GetId("Boat");
             HpBarId = VI.Entity.GetId("hpbar");
@@ -132,6 +133,7 @@ namespace BonVoyage
                     if ((xDis * 2.0f < THIS.Transform.Scale.GetX() + VI.Transform.Scale.GetX(PlayerId)) && (yDis * 2.0f < THIS.Transform.Scale.GetY() + VI.Transform.Scale.GetX(PlayerId)))
                     {
                         eState = EnemyState.ATTACK2;
+                        VI.ColorAI.StartAnimation(OverlayId);
                         if (!VI.Physics.IsCollided(PlayerId, THIS.GetId()))
                             ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed * 0.5f* enemySpeed * rainSpeed);
                         //minus health
