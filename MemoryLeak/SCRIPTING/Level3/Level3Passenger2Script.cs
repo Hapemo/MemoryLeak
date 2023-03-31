@@ -44,7 +44,8 @@ namespace BonVoyage {
 
     public override void Update(int _ENTITY) {
       base.Update(_ENTITY);
-
+            if (init != 1)
+                Init(_ENTITY);
       //if (playerBoat == 0) LOG.WRITE("playerBoat========================");
       //if (triggerBox == 0) LOG.WRITE("triggerBox========================");
       //if (correctDestination_Box == 0) LOG.WRITE("correctDestination_Box========================");
