@@ -1191,6 +1191,7 @@ namespace VI {
 	{
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void Init(float _width, float _height);
+
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static int GetCurrent(int _index, float _posX, float _posY);
 	}

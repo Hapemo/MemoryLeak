@@ -581,16 +581,36 @@ void InternalCalls::iWindow::SetFullScreen(bool _fullscreen) {
 Viewport stuff
 *******************************************************************************/
 int InternalCalls::iViewport::GetWidth(const int _eId) {
-	return VI::iEntity::GetEntity(_eId).GetComponent<Viewport>().width;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<Viewport>()) {
+		MissingComponent(e.GetComponent<General>().name, "Viewport");
+		return -1;
+	}
+	return e.GetComponent<Viewport>().width;
 }
 void InternalCalls::iViewport::SetWidth(const int _eId, int _width) {
-	VI::iEntity::GetEntity(_eId).GetComponent<Viewport>().width = _width;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<Viewport>()) {
+		MissingComponent(e.GetComponent<General>().name, "Viewport");
+		return;
+	}
+	e.GetComponent<Viewport>().width = _width;
 }
 bool InternalCalls::iViewport::IsUI(const int _eId) {
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<Viewport>()) {
+		MissingComponent(e.GetComponent<General>().name, "Viewport");
+		return false;
+	}
 	return VI::iEntity::GetEntity(_eId).GetComponent<Viewport>().isUI;
 }
 void InternalCalls::iViewport::SetIsUI(const int _eId, bool _ui) {
-	VI::iEntity::GetEntity(_eId).GetComponent<Viewport>().isUI = _ui;
+	Entity e = VI::iEntity::GetEntity(_eId);
+	if (!e.HasComponent<Viewport>()) {
+		MissingComponent(e.GetComponent<General>().name, "Viewport");
+		return;
+	}
+	e.GetComponent<Viewport>().isUI = _ui;
 }
 
 /*!*****************************************************************************
