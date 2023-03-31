@@ -237,7 +237,7 @@ namespace BonVoyage {
       float alpha = VI.Sprite.GetColor(_e, 3); // VI.LightSource.SpriteColor.GetA(); // Get color TODO
       if (_fadeStatus == FADE.IN) {
         if (alpha >= 255) return true;
-        Console.WriteLine("fade in alpha: " + alpha + '\n');
+        //Console.WriteLine("fade in alpha: " + alpha + '\n');
         alpha += (_speed * (float)VI.General.DeltaTime() < 1 ? 1 : _speed * (float)VI.General.DeltaTime());
         SetAlpha(_e, alpha > 255 ? 255 : alpha);
         if (alpha >= 255) return true;
@@ -286,7 +286,7 @@ namespace BonVoyage {
         }
       } else {
         if (Fading(_e, 150.0f, FADE.IN)) { // Run the conditional when finished fading in
-          Console.WriteLine("fading in\n");
+          //Console.WriteLine("fading in\n");
           DetachFromPlayerAnimation = false;
           PlayerScript.PlayerInOtherAnimation = false;
           DestinationReached = true;
