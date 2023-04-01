@@ -64,7 +64,7 @@ namespace BonVoyage {
             VI.Text.Scale.Set(minimapID, textScale);
             VI.MovementAI.Run(minimapID);
             VI.Viewport.SetIsUI(minimapID, false);
-            VI.Viewport.SetWidth(minimapID, (int)(VI.Camera.GetScale.X() * 4));
+            VI.Viewport.SetWidth(minimapID, (int)(MapX / 4));
             VI.Sprite.SetType(minimapID, 1);
 
             VI.MovementAI.SetNext(playerheadID, 0);
@@ -85,8 +85,7 @@ namespace BonVoyage {
                 VI.Text.Scale.Set(minimapID, textbigScale);
                 VI.MovementAI.Run(minimapID);
                 VI.Viewport.SetIsUI(minimapID, true);
-                float minimapwidth =   MapX < MapY/9.0f*16.0f? MapY / 9.0f * 16.0f: MapX;
-                VI.Viewport.SetWidth(minimapID, (int)(minimapwidth));
+                VI.Viewport.SetWidth(minimapID, (int)(MapX));
                 VI.Sprite.SetType(minimapID, 0);
 
                 float posx = VI.Transform.Position.GetX(boatID) * (miniMapX / MapX) ;
@@ -107,7 +106,7 @@ namespace BonVoyage {
                 VI.Text.Scale.Set(minimapID, textScale);
                 VI.MovementAI.Run(minimapID);
                 VI.Viewport.SetIsUI(minimapID, false);
-                VI.Viewport.SetWidth(minimapID, (int)VI.Camera.GetScale.X()*4); //(MapX / 4));
+                VI.Viewport.SetWidth(minimapID, (int)(MapX / 4));
                 VI.Sprite.SetType(minimapID, 1);
 
                 VI.MovementAI.SetNext(playerheadID, 0);
@@ -126,7 +125,7 @@ namespace BonVoyage {
             VI.Text.Scale.Set(minimapID, textScale);
             VI.MovementAI.Run(minimapID);
             VI.Viewport.SetIsUI(minimapID, false);
-            VI.Viewport.SetWidth(minimapID, (int)(VI.Camera.GetScale.X() * 4));
+            VI.Viewport.SetWidth(minimapID, (int)(MapX / 4));
             VI.Sprite.SetType(minimapID, 1);
 
             VI.MovementAI.SetNext(playerheadID, 0);
