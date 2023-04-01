@@ -2405,13 +2405,24 @@
         "RectCollider": {
             "centerOffset": {
                 "X": 0.0,
-                "Y": -179.0
+                "Y": -122.80000305175781
             },
             "scaleOffset": {
                 "X": 0.8999999761581421,
                 "Y": 0.6000000238418579
             },
             "isTrigger": false,
+            "renderFlag": true
+        },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 115.80000305175781
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.0010000000474974513
+            },
             "renderFlag": true
         },
         "Audio": {

@@ -5291,7 +5291,7 @@
                 "X": 1.0,
                 "Y": 0.004999999888241291
             },
-            "renderFlag": false
+            "renderFlag": true
         },
         "ShadowCaster": {
             "centerOffsets": [
