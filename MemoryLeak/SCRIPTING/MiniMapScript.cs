@@ -16,7 +16,7 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class MiniMapScript
     {
-        static bool big = false;
+        public static bool big = false;
         int minimapID;
         int boatID;
         int blurID;
@@ -66,9 +66,10 @@ namespace BonVoyage {
             VI.Viewport.SetIsUI(minimapID, false);
             VI.Viewport.SetWidth(minimapID, (int)(VI.Camera.GetScale.X() * 4));
             VI.Sprite.SetType(minimapID, 1);
-
-            VI.MovementAI.SetNext(playerheadID, 0);
-            VI.MovementAI.Run(playerheadID);
+            VI.Sprite.SetAlpha(playerheadID, 255);
+            VI.ColorAI.SetNextStep(playerheadID, 0);
+            //VI.MovementAI.SetNext(playerheadID, 0);
+            //VI.MovementAI.Run(playerheadID);
             VI.Entity.SetActive(blurID, false);
         }
 
@@ -89,14 +90,16 @@ namespace BonVoyage {
                 VI.Viewport.SetWidth(minimapID, (int)(minimapwidth));
                 VI.Sprite.SetType(minimapID, 0);
 
-                float posx = VI.Transform.Position.GetX(boatID) * (miniMapX / MapX) ;
-                float posy = VI.Transform.Position.GetY(boatID) * (miniMapY / MapY) ;//helppp
-                VI.MovementAI.Remove(playerheadID, 1);
-                VI.MovementAI.Add.Transform(playerheadID, 100, 100, 0, posx, posy, 0.5f);
+                //float posx = VI.Transform.Position.GetX(boatID) * (miniMapX / MapX) ;
+                //float posy = VI.Transform.Position.GetY(boatID) * (miniMapY / MapY) ;//helppp
+                //VI.MovementAI.Remove(playerheadID, 1);
+                //VI.MovementAI.Add.Transform(playerheadID, 100, 100, 0, posx, posy, 0.5f);
 
-                VI.MovementAI.SetNext(playerheadID, 1);
-                VI.MovementAI.Run(playerheadID);
-                VI.Entity.SetActive(blurID, true);
+                //VI.MovementAI.SetNext(playerheadID, 1);
+                //VI.MovementAI.Run(playerheadID);
+                //VI.Entity.SetActive(blurID, true);
+
+                VI.ColorAI.StartAnimation(playerheadID);
             }
             else if (big && (VI.Input.Mouse.Release(349)) && (!VI.Input.Button.Released(minimapID)))
             {
@@ -110,9 +113,11 @@ namespace BonVoyage {
                 VI.Viewport.SetWidth(minimapID, (int)VI.Camera.GetScale.X()*4); //(MapX / 4));
                 VI.Sprite.SetType(minimapID, 1);
 
-                VI.MovementAI.SetNext(playerheadID, 0);
-                VI.MovementAI.Run(playerheadID);
-                VI.Entity.SetActive(blurID, false);
+                //VI.MovementAI.SetNext(playerheadID, 0);
+                //VI.MovementAI.Run(playerheadID);
+                //VI.Entity.SetActive(blurID, false);
+                VI.ColorAI.StartAnimation(playerheadID);
+
             }
 
         }
@@ -129,8 +134,9 @@ namespace BonVoyage {
             VI.Viewport.SetWidth(minimapID, (int)(VI.Camera.GetScale.X() * 4));
             VI.Sprite.SetType(minimapID, 1);
 
-            VI.MovementAI.SetNext(playerheadID, 0);
-            VI.MovementAI.Run(playerheadID);
+            VI.ColorAI.SetNextStep(playerheadID, 1);
+            //VI.MovementAI.SetNext(playerheadID, 0);
+            //VI.MovementAI.Run(playerheadID);
             VI.Entity.SetActive(blurID, false);
         }
         public void Dead(int _ENTITY)

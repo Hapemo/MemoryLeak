@@ -2735,7 +2735,7 @@
         "Audio": {
             "path": "OldCollision_Finalized",
             "toPlay": false,
-            "volume": 1.8,
+            "volume": 1.7999999523162842,
             "volumeMod": 1.0,
             "pitch": 0.6100000143051147,
             "isPaused": false,

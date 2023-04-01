@@ -638,6 +638,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Walla_behind closed doors_Loop_1",
             "toPlay": true,
@@ -721,127 +732,127 @@
         "Animation": {
             "sheets": [
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_S_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Region2_Boat_S_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_SW_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Region2_Boat_SW_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_W_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Region2_Boat_W_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_NW_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Region2_Boat_NW_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_N_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Region2_Boat_N_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_NE_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Region2_Boat_NE_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_E_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Region2_Boat_E_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Boat_SE_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\Props_Region2_Boat_SE_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Region2\\Props_Region2_Boat_S_Hit_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Region2\\Props_Region2_Boat_SW_Hit_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Region2\\Props_Region2_Boat_W_Hit_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Region2\\Props_Region2_Boat_NW_Hit_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Region2\\Props_Region2_Boat_N_Hit_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Region2\\Props_Region2_Boat_NE_Hit_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Region2\\Props_Region2_Boat_E_Hit_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\hit\\Region2\\Props_Region2_Boat_NE_Hit_Spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Region2\\Props_Region2_Boat_S_Capsize_Spritesheet.png",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Region2\\Props_Region2_Boat_SW_Capsize_Spritesheet.png",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Region2\\Props_Region2_Boat_W_Capsize_Spritesheet.png",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Region2\\Props_Region2_Boat_NW_Capsize_Spritesheet.png",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Region2\\Props_Region2_Boat_N_Capsize_Spritesheet.png",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Region2\\Props_Region2_Boat_NE_Capsize_Spritesheet.png",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Region2\\Props_Region2_Boat_E_Capsize_Spritesheet.png",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 },
                 {
-                    "sheet": "",
+                    "sheet": "Textures\\Spritesheets\\BOAT\\capsize\\Region2\\Props_Region2_Boat_SE_Capsize_Spritesheet.png",
                     "frameCount": 11,
                     "timePerFrame": 0.17000000178813934
                 }
             ],
-            "currentImageIndex": 2
+            "currentImageIndex": 4
         },
         "SheetAnimation": {
             "frameCount": 8,
@@ -2316,6 +2327,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Walla_behind closed doors_Loop_2",
             "toPlay": true,
@@ -2412,17 +2434,6 @@
                 "Y": 0.6000000238418579
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 115.80000305175781
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.0010000000474974513
-            },
             "renderFlag": true
         },
         "Audio": {

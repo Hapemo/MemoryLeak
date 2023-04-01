@@ -58,7 +58,7 @@
             "texture": "Textures\\Icons\\mc-icon-head.png",
             "layer": 4
         },
-        "MovementAI": {
+        "ColorAI": {
             "run": true,
             "next": false,
             "loop": true,
@@ -66,24 +66,30 @@
             "cycle": false,
             "nextStep": 1,
             "acceleration": 0.0,
-            "moveOnHover": false,
-            "moveOnCollide": false,
-            "moveScale": true,
-            "moveRotate": true,
-            "moveTranslation": true,
+            "spriteORtext": 0,
+            "changeOnHover": false,
+            "changeOnCollide": false,
+            "changeR": false,
+            "changeG": false,
+            "changeB": false,
+            "changeA": true,
             "targets": [
                 {
                     "time": 0.30000001192092896,
-                    "Transform": {
-                        "scale": {
-                            "X": 60.0,
-                            "Y": 60.0
-                        },
-                        "rotation": 0.0,
-                        "translation": {
-                            "X": 640.0,
-                            "Y": -260.0
-                        }
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 0.30000001192092896,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 0
                     }
                 }
             ]
@@ -192,7 +198,7 @@
                     "time": 0.30000001192092896,
                     "Transform": {
                         "scale": {
-                            "X": 800.0,
+                            "X": 1244.0,
                             "Y": 700.0
                         },
                         "rotation": 0.0,

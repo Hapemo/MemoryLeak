@@ -21,7 +21,7 @@ namespace BonVoyage {
     {
         private bool init = true;
 
-        static bool big = false;
+        public static bool big = false;
         int weathermapID;
         int playerID;
         int blurID;

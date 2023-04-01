@@ -39,7 +39,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -68,6 +70,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -124,6 +129,10 @@
             "spriteORtext": 2,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -195,7 +204,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -224,6 +235,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -280,6 +294,10 @@
             "spriteORtext": 2,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -351,7 +369,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -380,6 +400,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -436,6 +459,10 @@
             "spriteORtext": 2,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -507,7 +534,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -536,6 +565,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -592,6 +624,10 @@
             "spriteORtext": 2,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -663,7 +699,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -692,6 +730,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -748,6 +789,10 @@
             "spriteORtext": 2,
             "changeOnHover": false,
             "changeOnCollide": false,
+            "changeR": true,
+            "changeG": true,
+            "changeB": true,
+            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,

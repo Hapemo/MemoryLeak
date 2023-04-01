@@ -113,7 +113,7 @@ namespace BonVoyage {
                     VI.Scene.Pause("Quit Confirmation");
                     VI.Scene.Pause("Dialogue");
                     VI.Scene.Pause("CrystalBalls");
-                    VI.Scene.Pause("Minimap");
+                    VI.Scene.Pause("MiniMap");
                     VI.Scene.Pause("EnemyMap");
                     VI.Scene.Pause("WeatherMap");
                     VI.Scene.Pause("Level1Background");
@@ -316,16 +316,15 @@ namespace BonVoyage {
                     // Play rowing audio
                     VI.Audio.Play(_ENTITY);
                 }
-
-                if (VI.Math.SqMagnitude(MovementXModifier, MovementYModifier) > float.Epsilon * float.Epsilon)
-                {
-                    ApplyForce(_ENTITY, MovementXModifier, MovementYModifier, 1f);
-                }
-
                 else
                 {
                     // Stop rowing audio
                     VI.Audio.Stop(_ENTITY);
+                }
+
+                if (VI.Math.SqMagnitude(MovementXModifier, MovementYModifier) > float.Epsilon * float.Epsilon)
+                {
+                    ApplyForce(_ENTITY, MovementXModifier, MovementYModifier, 1f);
                 }
             }
 
