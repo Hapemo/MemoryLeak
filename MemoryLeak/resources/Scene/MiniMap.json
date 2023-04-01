@@ -158,7 +158,7 @@
         },
         "Viewport": {
             "isUI": false,
-            "width": 1500
+            "width": 6000
         },
         "MovementAI": {
             "run": true,
@@ -192,7 +192,7 @@
                     "time": 0.30000001192092896,
                     "Transform": {
                         "scale": {
-                            "X": 800.0,
+                            "X": 1244.0,
                             "Y": 700.0
                         },
                         "rotation": 0.0,
