@@ -618,7 +618,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building1_spritesheet.png",
-            "layer": 700
+            "layer": 108
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -2296,7 +2296,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building4_spritesheet.png",
-            "layer": 700
+            "layer": 108
         },
         "SheetAnimation": {
             "frameCount": 3,
