@@ -156,16 +156,13 @@ namespace BonVoyage
             // Detecting player hits
             if (eState == EnemyState.ATTACK2 )
             {
-                if (THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get()/2)
+                if (THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get() / 12 * 8) //8th frame (takes 0.3 sec to full red)
                 {
                     VI.ColorAI.StartAnimation(OverlayId);
                 }
-                if (THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get() / 3*2)
+                if (THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get() -1) //11th frame
                 {
                     VI.Audio.Play(OverlayId);
-                }
-                if (THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get() - 1)
-                {
                     if (!takingDamage)
                     { 
                         PlayerScript.PlayerHealth += 1;
