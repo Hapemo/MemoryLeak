@@ -194,11 +194,13 @@ public:
 	};
 	struct iAudio {
 		static void s_Play(MonoString* _entityName, MonoString* _sceneName);
+		static void s_PlayNow(MonoString* _entityName, MonoString* _sceneName);
 		static void s_PlayOnLoop(MonoString* _entityName, MonoString* _sceneName);
 		static void s_SetLoop(MonoString* _entityName, MonoString* _sceneName, bool _loop);
 		static void s_Stop(MonoString* _entityName, MonoString* _sceneName);
 
 		static void Play(const int _eId);
+		static void PlayNow(const int _eId);
 		static void PlayOnLoop(const int _eId);
 		static void SetLoop(const int _eId, bool _loop);
 		static void Stop(const int _eId);

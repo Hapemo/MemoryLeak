@@ -130,7 +130,8 @@ namespace BonVoyage {
 		}
 		public class Audio {
 			internal static void Play() { VI.Audio.Play(ENTITY); }
-			internal static void PlayOnLoop() { VI.Audio.PlayOnLoop(ENTITY); }
+            internal static void PlayNow() { VI.Audio.PlayNow(ENTITY); }
+            internal static void PlayOnLoop() { VI.Audio.PlayOnLoop(ENTITY); }
 			internal static void Stop() { VI.Audio.Stop(ENTITY); }
 			internal static void SetLoop(bool _loop = true) { VI.Audio.SetLoop(ENTITY, _loop); }
 		}
@@ -1013,8 +1014,10 @@ namespace VI {
 	{
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void s_Play(string _entityName, string _sceneName = "");
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        internal extern static void s_PlayNow(string _entityName, string _sceneName = "");
 
-		[MethodImpl(MethodImplOptions.InternalCall)]
+        [MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void s_PlayOnLoop(string _entityName, string _sceneName = "");
 
 		[MethodImpl(MethodImplOptions.InternalCall)]
@@ -1026,7 +1029,10 @@ namespace VI {
 		[MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void Play(int _eId);
 
-		[MethodImpl(MethodImplOptions.InternalCall)]
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        internal extern static void PlayNow(int _eId);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
 		internal extern static void PlayOnLoop(int _eId);
 
 		[MethodImpl(MethodImplOptions.InternalCall)]

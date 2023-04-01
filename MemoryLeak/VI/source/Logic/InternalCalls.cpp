@@ -1692,14 +1692,27 @@ void InternalCalls::iAudio::Play(const Entity& _e) {
 		return;
 	}
 	_e.GetComponent<Audio>().sound.toPlay = true;
-	//(FUNC->GetEntity(_entityName, _sceneName)).GetComponent<Audio>().sound.volume = 1.f;
-	//audioManager->PlaySound((FUNC->GetEntity(_entityName, _sceneName)));
 }
 void InternalCalls::iAudio::Play(const int _eId) {
 	VI::iAudio::Play(VI::iEntity::GetEntity(_eId));
 }
 void InternalCalls::iAudio::Play(std::string const& _entityName, std::string const& _sceneName) {
 	VI::iAudio::Play(VI::iEntity::GetEntity(_entityName, _sceneName));
+}
+
+//playnow
+void InternalCalls::iAudio::PlayNow(const Entity& _e) {
+	if (!_e.HasComponent<Audio>()) {
+		MissingComponent(_e.GetComponent<General>().name, "Audio");
+		return;
+	}
+	audioManager->PlaySound(_e);
+}
+void InternalCalls::iAudio::PlayNow(const int _eId) {
+	VI::iAudio::PlayNow(VI::iEntity::GetEntity(_eId));
+}
+void InternalCalls::iAudio::PlayNow(std::string const& _entityName, std::string const& _sceneName) {
+	VI::iAudio::PlayNow(VI::iEntity::GetEntity(_entityName, _sceneName));
 }
 
 /*!*****************************************************************************

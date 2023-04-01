@@ -2732,6 +2732,21 @@
             "texture": "Textures\\Background\\overlay.png",
             "layer": 100
         },
+        "Audio": {
+            "path": "OldCollision_Finalized",
+            "toPlay": false,
+            "volume": 1.8,
+            "volumeMod": 1.0,
+            "pitch": 0.6100000143051147,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ColorAI": {
             "run": false,
             "next": true,
@@ -2758,12 +2773,12 @@
                     }
                 },
                 {
-                    "time": 0.699999988079071,
+                    "time": 0.30000001192092896,
                     "color": {
                         "r": 255,
                         "g": 255,
                         "b": 255,
-                        "a": 255
+                        "a": 100
                     }
                 },
                 {

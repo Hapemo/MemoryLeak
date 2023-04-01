@@ -654,6 +654,10 @@ public:
 		static void Play(const int _eId);
 		static void Play(std::string const& _entityName, std::string const& _sceneName);
 
+		static void PlayNow(const Entity& _e);
+		static void PlayNow(const int _eId);
+		static void PlayNow(std::string const& _entityName, std::string const& _sceneName);
+
 		/*!*****************************************************************************
 		\brief
 			Plays a sound on loop
