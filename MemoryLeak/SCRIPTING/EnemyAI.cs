@@ -159,6 +159,9 @@ namespace BonVoyage
                 if (THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get()/2)
                 {
                     VI.ColorAI.StartAnimation(OverlayId);
+                }
+                if (THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get() / 3*2)
+                {
                     VI.Audio.Play(OverlayId);
                 }
                 if (THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get() - 1)
