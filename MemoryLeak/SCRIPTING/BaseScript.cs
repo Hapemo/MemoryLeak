@@ -57,6 +57,7 @@ namespace BonVoyage
             VI.Audio.Play(player);
           }
             else {
+                VI.Audio.Stop(player);
                 return true;
             }
 
