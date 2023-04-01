@@ -113,7 +113,7 @@ namespace BonVoyage {
                     VI.Scene.Pause("Quit Confirmation");
                     VI.Scene.Pause("Dialogue");
                     VI.Scene.Pause("CrystalBalls");
-                    VI.Scene.Pause("Minimap");
+                    VI.Scene.Pause("MiniMap");
                     VI.Scene.Pause("EnemyMap");
                     VI.Scene.Pause("WeatherMap");
                     VI.Scene.Pause("Level1Background");
