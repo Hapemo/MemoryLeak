@@ -255,13 +255,13 @@ namespace BonVoyage {
       // returns true once complete
       if (fadingOut) { // Fading out
         VI.ParticleSystem.GenerateOnce(_e);
-        fadingOut = !Fading(_e, 100.0f, FADE.OUT);
+        fadingOut = !Fading(_e, 300.0f, FADE.OUT);
         if (!fadingOut) { // Just finished fading out
           VI.Transform.Position.SetX(_e, VI.Transform.Position.GetX(playerBoat));
           VI.Transform.Position.SetY(_e, VI.Transform.Position.GetY(playerBoat));
         }
       } else {
-        if (Fading(_e, 150.0f, FADE.IN)) { // Run the conditional when finished fading in
+        if (Fading(_e, 300.0f, FADE.IN)) { // Run the conditional when finished fading in
           AttachedToPlayer = true;
           AttachToPlayerAnimation = false;
           PlayerScript.PlayerInOtherAnimation = false;
@@ -278,14 +278,14 @@ namespace BonVoyage {
       if (fadingOut) { // Fading out
         TransferEntityPos(_e, playerBoat); // Because the boat will be moving when transfering
         VI.ParticleSystem.GenerateOnce(_e);
-        fadingOut = !Fading(_e, 100.0f, FADE.OUT);
+        fadingOut = !Fading(_e, 300.0f, FADE.OUT);
         if (!fadingOut) { // Just finished fading out
           int renderLocation = correctDestinationDelivery ? correctDestination_RenderLocation : wrongDestination_RenderLocation;
           VI.Transform.Position.SetX(_e, VI.Transform.Position.GetX(renderLocation));
           VI.Transform.Position.SetY(_e, VI.Transform.Position.GetY(renderLocation));
         }
       } else {
-        if (Fading(_e, 150.0f, FADE.IN)) { // Run the conditional when finished fading in
+        if (Fading(_e, 300.0f, FADE.IN)) { // Run the conditional when finished fading in
           //Console.WriteLine("fading in\n");
           DetachFromPlayerAnimation = false;
           PlayerScript.PlayerInOtherAnimation = false;

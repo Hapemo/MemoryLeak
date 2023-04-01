@@ -25281,7 +25281,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Ruin3_Spritesheet.png",
-            "layer": 704
+            "layer": 901
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -25375,7 +25375,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree1_Spritesheet.png",
-            "layer": 705
+            "layer": 902
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -26222,8 +26222,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -3450.0,
-                "Y": -1340.0
+                "X": -3500.0,
+                "Y": -1350.0
             }
         },
         "Sprite": {
@@ -27822,7 +27822,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region3_Ruin2.png",
-            "layer": 900
+            "layer": 700
         },
         "RectCollider": {
             "centerOffset": {
@@ -28368,7 +28368,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2-tilt.png",
@@ -28444,7 +28444,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2-tilt.png",
@@ -28520,7 +28520,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2-tilt.png",
@@ -28596,7 +28596,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2-tilt.png",
@@ -28672,7 +28672,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2-tilt.png",
@@ -28945,7 +28945,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2-tilt.png",
@@ -30221,7 +30221,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Star_Spritesheet.png",
-            "layer": 8
+            "layer": 901
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -30738,7 +30738,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_island1.png",
-            "layer": 705
+            "layer": 901
         },
         "RectCollider": {
             "centerOffset": {
@@ -32114,7 +32114,7 @@
                 "r": 255,
                 "g": 255,
                 "b": 255,
-                "a": 255
+                "a": 0
             },
             "sprite": 2,
             "texture": "Textures\\Menu\\button-2-tilt.png",
