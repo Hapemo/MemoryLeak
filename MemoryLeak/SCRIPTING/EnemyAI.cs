@@ -101,7 +101,7 @@ namespace BonVoyage
                     rainSpeed = 1.045f;
                     THIS.MovementAI.ForceStop();
                     if (!OnScreen(1.2f))
-                        ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed *20.0f);
+                        ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed *15.0f);
                 }
                 else
                 {
@@ -133,7 +133,6 @@ namespace BonVoyage
                     if ((xDis * 2.0f < THIS.Transform.Scale.GetX() + VI.Transform.Scale.GetX(PlayerId)) && (yDis * 2.0f < THIS.Transform.Scale.GetY() + VI.Transform.Scale.GetX(PlayerId)))
                     {
                         eState = EnemyState.ATTACK2;
-                        VI.ColorAI.StartAnimation(OverlayId);
                         if (!VI.Physics.IsCollided(PlayerId, THIS.GetId()))
                             ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed * 0.5f* enemySpeed * rainSpeed);
                         //minus health
@@ -157,13 +156,18 @@ namespace BonVoyage
             // Detecting player hits
             if (eState == EnemyState.ATTACK2 )
             {
-
+                if (THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get()/2)
+                {
+                    VI.ColorAI.StartAnimation(OverlayId);
+                    VI.Audio.Play(OverlayId);
+                }
                 if (THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get() - 1)
                 {
                     if (!takingDamage)
                     { 
                         PlayerScript.PlayerHealth += 1;
                         VI.Animation.SpriteSheet.SheetIndex.Set(HpBarId, PlayerScript.PlayerHealth);
+                        
                     }
                     takingDamage = true;
                 }

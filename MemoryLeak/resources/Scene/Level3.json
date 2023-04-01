@@ -31161,7 +31161,7 @@
         "Audio": {
             "path": "Boat_Row_SFX",
             "toPlay": false,
-            "volume": 1.0,
+            "volume": 1.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,

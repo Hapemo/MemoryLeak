@@ -389,6 +389,9 @@ int MonoMethods::iSprite::GetAlpha(const int _eId) {
 void MonoMethods::iAudio::s_Play(MonoString* _entityName, MonoString* _sceneName) {
 	VI::iAudio::Play(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
+void MonoMethods::iAudio::s_PlayNow(MonoString* _entityName, MonoString* _sceneName) {
+	VI::iAudio::PlayNow(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
+}
 void MonoMethods::iAudio::s_PlayOnLoop(MonoString* _entityName, MonoString* _sceneName) {
 	VI::iAudio::PlayOnLoop(MONO->ConvertFromMonoString(_entityName), MONO->ConvertFromMonoString(_sceneName));
 }
@@ -401,6 +404,9 @@ void MonoMethods::iAudio::s_Stop(MonoString* _entityName, MonoString* _sceneName
 
 void MonoMethods::iAudio::Play(const int _eId) {
 	VI::iAudio::Play(_eId);
+}
+void MonoMethods::iAudio::PlayNow(const int _eId) {
+	VI::iAudio::PlayNow(_eId);
 }
 void MonoMethods::iAudio::PlayOnLoop(const int _eId) {
 	VI::iAudio::PlayOnLoop(_eId);
@@ -849,6 +855,7 @@ void MonoMethods::RegisterCalls() {
 
 	// Audio
 	mono_add_internal_call("VI.Audio::Play", &MM::iAudio::Play);
+	mono_add_internal_call("VI.Audio::PlayNow", &MM::iAudio::PlayNow);
 	mono_add_internal_call("VI.Audio::PlayOnLoop", &MM::iAudio::PlayOnLoop);
 	mono_add_internal_call("VI.Audio::SetLoop", &MM::iAudio::SetLoop);
 	mono_add_internal_call("VI.Audio::Stop", &MM::iAudio::Stop);
@@ -869,6 +876,7 @@ void MonoMethods::RegisterCalls() {
 
 	mono_add_internal_call("VI.Audio::s_Stop", &MM::iAudio::s_Stop);
 	mono_add_internal_call("VI.Audio::s_Play", &MM::iAudio::s_Play);
+	mono_add_internal_call("VI.Audio::s_PlayNow", &MM::iAudio::s_PlayNow);
 	mono_add_internal_call("VI.Audio::s_PlayOnLoop", &MonoMethods::iAudio::s_PlayOnLoop);
 	mono_add_internal_call("VI.Audio::s_SetLoop", &MM::iAudio::s_SetLoop);
 
