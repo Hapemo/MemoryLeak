@@ -17,7 +17,7 @@ using System.Runtime.CompilerServices;
 namespace BonVoyage {
     public class EnemyMapScript
     {
-        static bool big = false;
+        public static bool big = false;
         int enemymapID;
         int miniplayerID;
         int minienemyID;
