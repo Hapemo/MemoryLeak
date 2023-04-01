@@ -25160,7 +25160,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Ruin3_Spritesheet.png",
-            "layer": 704
+            "layer": 901
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -25243,7 +25243,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree1_Spritesheet.png",
-            "layer": 705
+            "layer": 902
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -26046,8 +26046,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -3450.0,
-                "Y": -1340.0
+                "X": -3500.0,
+                "Y": -1350.0
             }
         },
         "Sprite": {
@@ -27403,7 +27403,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Ruin1_Spritesheet.png",
-            "layer": 900
+            "layer": 703
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -27569,7 +27569,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Region3_Ruin2.png",
-            "layer": 900
+            "layer": 700
         },
         "RectCollider": {
             "centerOffset": {
@@ -29913,7 +29913,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Star_Spritesheet.png",
-            "layer": 8
+            "layer": 901
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -30419,7 +30419,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_island1.png",
-            "layer": 705
+            "layer": 901
         },
         "RectCollider": {
             "centerOffset": {
