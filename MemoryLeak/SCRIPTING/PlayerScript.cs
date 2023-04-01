@@ -316,16 +316,15 @@ namespace BonVoyage {
                     // Play rowing audio
                     VI.Audio.Play(_ENTITY);
                 }
-
-                if (VI.Math.SqMagnitude(MovementXModifier, MovementYModifier) > float.Epsilon * float.Epsilon)
-                {
-                    ApplyForce(_ENTITY, MovementXModifier, MovementYModifier, 1f);
-                }
-
                 else
                 {
                     // Stop rowing audio
                     VI.Audio.Stop(_ENTITY);
+                }
+
+                if (VI.Math.SqMagnitude(MovementXModifier, MovementYModifier) > float.Epsilon * float.Epsilon)
+                {
+                    ApplyForce(_ENTITY, MovementXModifier, MovementYModifier, 1f);
                 }
             }
 
