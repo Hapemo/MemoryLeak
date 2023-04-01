@@ -68,6 +68,11 @@ namespace BonVoyage {
         public virtual void Update(int _ENTITY) {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
 
+            if (AttachedToPlayer && PlayerScript.PlayerInDeathAnimation) {
+                // Passenger animation for when player is dying
+                VI.ParticleSystem.GenerateOnce(_ENTITY);
+                Fading(_ENTITY, 300f, FADE.OUT);
+            }
         }
 
         public virtual void FixedUpdate(int _ENTITY) {
