@@ -70,7 +70,7 @@ namespace BonVoyage {
         public void Update(int _ENTITY)
         {
             THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
-            if ((VI.Input.Button.Released(toggleMapID)) == true)
+            if ((VI.Input.Button.Released(toggleMapID)) == true && !WeatherMapScript.big && !EnemyMapScript.big && !MiniMapScript.big)
             {
                 toggle = toggle >= 2 ? 0 : (toggle + 1);
                 if (currlevel == "Level1" && toggle == 2)
