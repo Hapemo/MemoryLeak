@@ -638,6 +638,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Walla_behind closed doors_Loop_1",
             "toPlay": true,
@@ -2316,6 +2327,17 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "LayerCollider": {
+            "centerOffset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "scaleOffset": {
+                "X": 1.0,
+                "Y": 0.004999999888241291
+            },
+            "renderFlag": true
+        },
         "Audio": {
             "path": "Walla_behind closed doors_Loop_2",
             "toPlay": true,
@@ -2412,17 +2434,6 @@
                 "Y": 0.6000000238418579
             },
             "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 115.80000305175781
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.0010000000474974513
-            },
             "renderFlag": true
         },
         "Audio": {
