@@ -55,9 +55,6 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
-            "moveScale": true,
-            "moveRotate": true,
-            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -114,10 +111,6 @@
             "spriteORtext": 2,
             "changeOnHover": false,
             "changeOnCollide": false,
-            "changeR": true,
-            "changeG": true,
-            "changeB": true,
-            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -205,9 +198,6 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
-            "moveScale": true,
-            "moveRotate": true,
-            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -264,10 +254,6 @@
             "spriteORtext": 2,
             "changeOnHover": false,
             "changeOnCollide": false,
-            "changeR": true,
-            "changeG": true,
-            "changeB": true,
-            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -355,9 +341,6 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
-            "moveScale": true,
-            "moveRotate": true,
-            "moveTranslation": true,
             "targets": [
                 {
                     "time": 1.0,
@@ -414,10 +397,6 @@
             "spriteORtext": 2,
             "changeOnHover": false,
             "changeOnCollide": false,
-            "changeR": true,
-            "changeG": true,
-            "changeB": true,
-            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,

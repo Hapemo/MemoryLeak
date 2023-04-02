@@ -56,10 +56,6 @@
             "spriteORtext": 1,
             "changeOnHover": false,
             "changeOnCollide": false,
-            "changeR": true,
-            "changeG": true,
-            "changeB": true,
-            "changeA": true,
             "targets": [
                 {
                     "time": 1.0,
