@@ -54,7 +54,9 @@ namespace BonVoyage {
     protected int PP2ID;
     protected int G1ID;
 
-
+        protected int dpopup;
+        protected int dadvance;
+        protected int dchoice;
     public virtual void Alive(int _ENTITY) {
       THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
     }
@@ -78,7 +80,10 @@ namespace BonVoyage {
       UIMemoryFragmentID = VI.Entity.GetId("memoryfragment");
       UIMemoryFragmentScreenID = VI.Entity.GetId("memoryfragmentscreen");
       allPassengerDelivered = false;
-    }
+            dpopup = VI.Entity.GetId("Dpopup");
+            dadvance = VI.Entity.GetId("Dadvance");
+            dchoice = VI.Entity.GetId("Dchoise");
+        }
 
     public virtual void EarlyUpdate(int _ENTITY) {
       THIS.StoreId(_ENTITY); // DO NOT REMOVE!!!
@@ -264,6 +269,7 @@ namespace BonVoyage {
     public bool RunDialog(int player, int notPlayer, int choice1, int choice2, string dialogFile) {
       if (dialogInit) {
         DisableUI();
+        VI.Audio.PlayNow(dpopup);
         // Load Little Girl Talking
         VI.Dialogue.LoadScript(dialogFile);
         VI.Dialogue.Current.SetTo(1);
@@ -298,9 +304,16 @@ namespace BonVoyage {
       // Button click set flags
       if (choiceFlag) {
         if (MouseClick(choice1) || MouseClick(choice2))
+                {
           updateChat = true;
+                        VI.Audio.PlayNow(dchoice);
+                }
       } else if (VI.Input.Mouse.Press())//(VI.Input.Button.s_Released(player, scene) || VI.Input.Button.s_Released(notPlayer, scene))
-          updateChat = true;
+            {
+                VI.Audio.PlayNow(dadvance);
+
+                updateChat = true;
+            }
 
       // Logic done using those flags
       if (updateChat) {
