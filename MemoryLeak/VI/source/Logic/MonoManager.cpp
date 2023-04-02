@@ -27,7 +27,7 @@ The MonoManager class handles the C# scripting for the engine.
 MonoDomain* MonoManager::mAppDomain = nullptr;
 MonoDomain* MonoManager::mRootDomain = nullptr;
 MonoAssembly* MonoManager::mAssembly = nullptr;
-uint32_t MonoManager::mMonoHandler = 0;
+std::vector<uint32_t> MonoManager::mMonoHandlers;
 
 /*!*****************************************************************************
 \brief
@@ -139,7 +139,7 @@ MonoObject* MonoManager::InstantiateClass(const char* _namespace, const char* _c
 	}
 	else LOG_CUSTOM("Mono", "Allocated an instance to Mono class " + namespaceStr + "::" + classStr + "."); 
 
-	mMonoHandler = mono_gchandle_new(classInstance, true);
+	mMonoHandlers.push_back(mono_gchandle_new(classInstance, true));
 
 	// Call the parameterless (default) constructor
 	mono_runtime_object_init(classInstance);
@@ -239,5 +239,7 @@ void MonoManager::CloseMono() {
 	mAppDomain = nullptr;
 	mAssembly = nullptr;
 	mRootDomain = nullptr;
-	mono_gchandle_free(mMonoHandler);
+
+	for(size_t i = 0; i < mMonoHandlers.size(); ++i)
+		mono_gchandle_free(mMonoHandlers[i]);
 }

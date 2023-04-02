@@ -105,7 +105,7 @@ private:
 	static MonoDomain* mAppDomain;
 	static MonoDomain* mRootDomain;
 	static MonoAssembly* mAssembly;
-	static uint32_t mMonoHandler;
+	static std::vector<uint32_t> mMonoHandlers;
 
 	// Storing all mono scripts
 	std::map<std::string, MonoObject*> mMonoComponents;
