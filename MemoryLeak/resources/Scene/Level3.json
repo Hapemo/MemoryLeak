@@ -19905,7 +19905,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0

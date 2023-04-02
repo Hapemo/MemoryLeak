@@ -44,8 +44,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -99,8 +99,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -154,8 +154,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -209,8 +209,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -264,8 +264,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -319,8 +319,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -374,8 +374,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -429,8 +429,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -484,8 +484,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -539,8 +539,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -595,7 +595,7 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -649,8 +649,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -704,8 +704,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -759,8 +759,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -815,7 +815,7 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -869,8 +869,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -924,8 +924,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -979,8 +979,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1034,8 +1034,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1089,8 +1089,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1144,8 +1144,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1199,8 +1199,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1254,8 +1254,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1309,8 +1309,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1364,8 +1364,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1419,8 +1419,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1474,8 +1474,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1529,8 +1529,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1584,8 +1584,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1639,8 +1639,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1694,8 +1694,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1749,8 +1749,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1804,8 +1804,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1859,8 +1859,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1914,8 +1914,8 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
-            "isSpacial": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -1969,7 +1969,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -2024,7 +2024,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -2079,7 +2079,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -2134,7 +2134,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -2189,7 +2189,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -2283,7 +2283,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -2340,7 +2340,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -2448,7 +2448,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -2503,7 +2503,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -2558,7 +2558,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -2613,7 +2613,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -2680,7 +2680,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -5880,7 +5880,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -5935,7 +5935,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -5990,7 +5990,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -6045,7 +6045,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -6100,7 +6100,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -12284,7 +12284,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -12485,7 +12485,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -13150,7 +13150,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -13217,7 +13217,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -13284,7 +13284,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -18887,7 +18887,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -18954,7 +18954,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -19289,7 +19289,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -25717,7 +25717,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -25851,7 +25851,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -25918,7 +25918,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -25985,7 +25985,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -26119,7 +26119,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -26320,7 +26320,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -26387,7 +26387,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
@@ -26442,7 +26442,7 @@
             "isMute": false,
             "isLoop": false,
             "isRandPitch": false,
-            "toPlayOnCollision": false,
+            "toPlayOnCollision": true,
             "isSpacial": false,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
