@@ -24798,7 +24798,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\ghost 5\\Character_ghost5_SE_idle_spritesheet.png",
-            "layer": 710
+            "layer": 901
         },
         "Animation": {
             "sheets": [
