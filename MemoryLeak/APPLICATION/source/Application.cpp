@@ -350,7 +350,6 @@ void Application::PrintTitleBar(double _s) {
                                                << "Entity Count: " << Coordinator::GetInstance()->GetEntityCount() << " | ";
     if (printDebug) sstr << GET_SYSTEMS_PERFORMANCES();
 #else
-    sstr << " fps: " << FPSManager::fps;
     sstr << Application::getTitle();
 #endif
     glfwSetWindowTitle(Application::getWindow(), sstr.str().c_str());
