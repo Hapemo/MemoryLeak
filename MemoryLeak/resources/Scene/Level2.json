@@ -6346,19 +6346,19 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
-            "volume": 0.5,
+            "path": "01.Daytime_Forest_Field_Sun_Loop",
+            "toPlay": true,
+            "volume": 1.0,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
             "isMute": false,
-            "isLoop": false,
+            "isLoop": true,
             "isRandPitch": false,
-            "toPlayOnCollision": true,
-            "isSpacial": false,
+            "toPlayOnCollision": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
-            "spacialRatio": 1.0
+            "spacialRatio": 2.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13425,19 +13425,19 @@
             "renderFlag": true
         },
         "Audio": {
-            "path": "Collision_Finalized",
-            "toPlay": false,
+            "path": "SwampNightTime_Loop",
+            "toPlay": true,
             "volume": 0.5,
             "volumeMod": 1.0,
             "pitch": 1.0,
             "isPaused": false,
             "isMute": false,
-            "isLoop": false,
+            "isLoop": true,
             "isRandPitch": false,
-            "toPlayOnCollision": true,
-            "isSpacial": false,
+            "toPlayOnCollision": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
-            "spacialRatio": 1.0
+            "spacialRatio": 2.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -13861,7 +13861,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 520.0,
-                "Y": 2230.0
+                "Y": 2240.0
             }
         },
         "Sprite": {
@@ -22066,7 +22066,7 @@
             "isLoop": false,
             "isRandPitch": true,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -22247,7 +22247,7 @@
             "isLoop": false,
             "isRandPitch": true,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -22428,7 +22428,7 @@
             "isLoop": false,
             "isRandPitch": true,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -22609,7 +22609,7 @@
             "isLoop": false,
             "isRandPitch": true,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -22790,7 +22790,7 @@
             "isLoop": false,
             "isRandPitch": true,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -22971,7 +22971,7 @@
             "isLoop": false,
             "isRandPitch": true,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -23152,7 +23152,7 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -23230,7 +23230,7 @@
             "isLoop": false,
             "isRandPitch": true,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -23411,7 +23411,7 @@
             "isLoop": false,
             "isRandPitch": true,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -23592,7 +23592,7 @@
             "isLoop": false,
             "isRandPitch": true,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -23773,7 +23773,7 @@
             "isLoop": false,
             "isRandPitch": true,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -23954,7 +23954,7 @@
             "isLoop": false,
             "isRandPitch": true,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -24135,7 +24135,7 @@
             "isLoop": false,
             "isRandPitch": true,
             "toPlayOnCollision": true,
-            "isSpacial": false,
+            "isSpacial": true,
             "spacialDistance": 1.0,
             "spacialRatio": 1.0
         },
@@ -30020,6 +30020,21 @@
                 "Y": 0.0010000000474974513
             },
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "ScaryBirdNightimeSwamp_Linear",
+            "toPlay": true,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": true,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.5
         },
         "ShadowCaster": {
             "centerOffsets": [
