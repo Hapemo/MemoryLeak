@@ -151,7 +151,7 @@
             }
         },
         "isActive": false,
-        "mForceRender": true,
+        "mForceRender": false,
         "layer": 5,
         "order": 0
     },

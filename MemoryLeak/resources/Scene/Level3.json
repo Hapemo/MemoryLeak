@@ -9393,8 +9393,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 417.5,
-                "Y": 477.5
+                "X": 410.0,
+                "Y": 470.0
             },
             "rotation": 0.0,
             "translation": {
@@ -9913,8 +9913,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 420.0,
-                "Y": 420.0
+                "X": 410.0,
+                "Y": 410.0
             },
             "rotation": 0.0,
             "translation": {
@@ -24798,7 +24798,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\ghost 5\\Character_ghost5_SE_idle_spritesheet.png",
-            "layer": 710
+            "layer": 901
         },
         "Animation": {
             "sheets": [
@@ -24943,7 +24943,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\NPC\\ghost 6\\Character_ghost6_SW_idle_spritesheet.png",
-            "layer": 710
+            "layer": 901
         },
         "Animation": {
             "sheets": [
@@ -25007,17 +25007,6 @@
             },
             "isTrigger": true,
             "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": false
         },
         "Audio": {
             "path": "Fetching_Passenger",
@@ -25517,8 +25506,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 355.0,
-                "Y": 515.0
+                "X": 345.0,
+                "Y": 505.0
             },
             "rotation": 0.0,
             "translation": {
@@ -28557,8 +28546,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 400.0
+                "X": 387.5,
+                "Y": 387.5
             },
             "rotation": 0.0,
             "translation": {
@@ -34023,8 +34012,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 400.0,
-                "Y": 460.0
+                "X": 417.5,
+                "Y": 477.5
             },
             "rotation": 0.0,
             "translation": {
@@ -41014,8 +41003,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 420.0,
-                "Y": 420.0
+                "X": 432.5,
+                "Y": 432.5
             },
             "rotation": 0.0,
             "translation": {
@@ -43552,6 +43541,39 @@
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "GameOverController",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -5600.0,
+                "Y": 3120.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 5
+        },
+        "Script": {
+            "name": "GameOver"
         }
     }
 ]
