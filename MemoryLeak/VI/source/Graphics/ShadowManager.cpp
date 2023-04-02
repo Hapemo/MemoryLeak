@@ -207,7 +207,7 @@ void ShadowManager::CreateObjectVertices(Entity e)
 		{
 			int color = static_cast<int>(255 - 175 * (Math::Distance(xform.translation, lightPos) - 0.5f * radius) / (radius * 0.5f));
 			if (color < 80) color = 80;
-			e.GetComponent<Sprite>().color = { (unsigned char)color, (unsigned char)color, (unsigned char)color, 255 };
+			e.GetComponent<Sprite>().color = { (unsigned char)color, (unsigned char)color, (unsigned char)color, e.GetComponent<Sprite>().color.a };
 		}
 	}
 
