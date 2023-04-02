@@ -22,7 +22,7 @@
                 "r": 30,
                 "g": 30,
                 "b": 100,
-                "a": 180
+                "a": 120
             },
             "sprite": 0,
             "texture": "",
@@ -209,6 +209,54 @@
                     }
                 }
             ]
+        }
+    },
+    {
+        "General": {
+            "name": "CloseBtn",
+            "tag": 5,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 60.0,
+                "Y": 60.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 680.0,
+                "Y": 320.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 2,
+            "texture": "Textures\\Icons\\ExitBtn.png",
+            "layer": 8
+        },
+        "Audio": {
+            "path": "Menu_Close_Button",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 0.5,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
+        "Button": {
+            "interactable": true
         }
     }
 ]

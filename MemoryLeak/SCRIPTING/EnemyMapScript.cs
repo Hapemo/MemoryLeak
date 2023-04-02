@@ -26,6 +26,7 @@ namespace BonVoyage {
         int radarID;
         int swiperID;
         int blurID;
+        int closeID;
         float textOffsetX;
         float textOffsetY;
         float textbigOffsetX;
@@ -54,6 +55,7 @@ namespace BonVoyage {
             blurID = VI.Entity.GetId("blur", "EnemyMap");
             MapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", currlevelBG));
             MapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", currlevelBG));
+            closeID = VI.Entity.GetId("CloseBtn", "EnemyMap");
             textOffsetX = -42;// VI.Text.Offset.GetX(enemymapID);
             textOffsetY = -170;// VI.Text.Offset.GetY(enemymapID);
             textbigOffsetX = -120;
@@ -62,7 +64,7 @@ namespace BonVoyage {
             textbigScale = 1.0f;
 
             VI.Entity.SetActive(blurID, false);
-
+            VI.Entity.SetActive(closeID, false);
             scaleMapX = MapX / 2;
             scaleMapY = MapY / 2;
             miniMapX = VI.Transform.Scale.GetX(enemymapID);
@@ -83,6 +85,7 @@ namespace BonVoyage {
             if (!big && (VI.Input.Button.Released(enemymapID)))
             {
                 big = true;
+                VI.Entity.SetActive(closeID, true);
                 PlayerScript.PlayerInOtherAnimation = true;
                 VI.MovementAI.SetNext(enemymapID, 1);
                 VI.Text.Offset.Set(enemymapID, textbigOffsetX, textbigOffsetY);
@@ -104,6 +107,7 @@ namespace BonVoyage {
             else if (big && (VI.Input.Mouse.Release(349)) && (!VI.Input.Button.Released(enemymapID)))
             {
                 big = false;
+                VI.Entity.SetActive(closeID, false);
                 PlayerScript.PlayerInOtherAnimation = false;
                 VI.MovementAI.SetNext(enemymapID, 0);
                 VI.Text.Offset.Set(enemymapID, textOffsetX, textOffsetY);

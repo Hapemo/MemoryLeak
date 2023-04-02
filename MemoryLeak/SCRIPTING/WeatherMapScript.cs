@@ -25,6 +25,7 @@ namespace BonVoyage {
         int weathermapID;
         int playerID;
         int blurID;
+        int closeID;
         float textOffsetX;
         float textOffsetY;
         float textbigOffsetX;
@@ -54,7 +55,7 @@ namespace BonVoyage {
             maxMapX = VI.Transform.Scale.GetX(VI.Entity.GetId("Water", currlevelBG));
             maxMapY = VI.Transform.Scale.GetY(VI.Entity.GetId("Water", currlevelBG));
             VI.Weather.Init(maxMapX, maxMapY);
-
+            closeID = VI.Entity.GetId("CloseBtn", "WeatherMap");
             VI.Entity.SetActive(blurID, false);
             for (int i = 0; i < 25; i++)
             {
@@ -91,6 +92,7 @@ namespace BonVoyage {
             }
 
             VI.Entity.SetActive(blurID, false);
+            VI.Entity.SetActive(closeID, false);
         }
         public void Update(int _ENTITY) {
             if (init) {
@@ -105,6 +107,7 @@ namespace BonVoyage {
             if (!big && (VI.Input.Button.Released(weathermapID)))
             {
                 big = true;
+                VI.Entity.SetActive(closeID, true);
                 PlayerScript.PlayerInOtherAnimation = true;
                 VI.MovementAI.SetNext(weathermapID, 1);
                 VI.Text.Offset.Set(weathermapID, textbigOffsetX, textbigOffsetY);
@@ -123,6 +126,7 @@ namespace BonVoyage {
             else if (big && (VI.Input.Mouse.Release(349)) && (!VI.Input.Button.Released(weathermapID)))
             {
                 big = false;
+                VI.Entity.SetActive(closeID, false);
                 PlayerScript.PlayerInOtherAnimation = false;
                 VI.MovementAI.SetNext(weathermapID, 0);
                 VI.Text.Offset.Set(weathermapID, textOffsetX, textOffsetY);

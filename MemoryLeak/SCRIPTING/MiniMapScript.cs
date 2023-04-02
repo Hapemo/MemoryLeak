@@ -20,6 +20,7 @@ namespace BonVoyage {
         int minimapID;
         int boatID;
         int blurID;
+        int closeID;
         int playerheadID;
         float textOffsetX;
         float textOffsetY;
@@ -47,7 +48,7 @@ namespace BonVoyage {
             minimapID = VI.Entity.GetId("minimap", "MiniMap");
             playerheadID = VI.Entity.GetId("playerhead", "MiniMap");
             blurID = VI.Entity.GetId("blur", "MiniMap");
-
+            closeID = VI.Entity.GetId("CloseBtn", "MiniMap");
 
             textOffsetX = -59;// VI.Text.Offset.GetX(minimapID);
             textOffsetY = -170;// VI.Text.Offset.GetY(minimapID);
@@ -71,6 +72,7 @@ namespace BonVoyage {
             //VI.MovementAI.SetNext(playerheadID, 0);
             //VI.MovementAI.Run(playerheadID);
             VI.Entity.SetActive(blurID, false);
+            VI.Entity.SetActive(closeID, false);
         }
 
         public void Update(int _ENTITY) {
@@ -80,6 +82,7 @@ namespace BonVoyage {
             if (!big && (VI.Input.Button.Released(minimapID)))
             {
                 big = true;
+                VI.Entity.SetActive(closeID, true);
                 PlayerScript.PlayerInOtherAnimation = true;
                 VI.MovementAI.SetNext(minimapID, 1);
                 VI.Text.Offset.Set(minimapID, textbigOffsetX, textbigOffsetY);
@@ -97,13 +100,14 @@ namespace BonVoyage {
 
                 //VI.MovementAI.SetNext(playerheadID, 1);
                 //VI.MovementAI.Run(playerheadID);
-                //VI.Entity.SetActive(blurID, true);
+                VI.Entity.SetActive(blurID, true);
 
                 VI.ColorAI.StartAnimation(playerheadID);
             }
             else if (big && (VI.Input.Mouse.Release(349)) && (!VI.Input.Button.Released(minimapID)))
             {
                 big = false;
+                VI.Entity.SetActive(closeID, false);
                 PlayerScript.PlayerInOtherAnimation = false;
                 VI.MovementAI.SetNext(minimapID, 0);
                 VI.Text.Offset.Set(minimapID, textOffsetX, textOffsetY);
@@ -115,7 +119,7 @@ namespace BonVoyage {
 
                 //VI.MovementAI.SetNext(playerheadID, 0);
                 //VI.MovementAI.Run(playerheadID);
-                //VI.Entity.SetActive(blurID, false);
+                VI.Entity.SetActive(blurID, false);
                 VI.ColorAI.StartAnimation(playerheadID);
 
             }
