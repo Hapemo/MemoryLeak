@@ -98,6 +98,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -201,6 +216,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -306,6 +336,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -371,7 +416,7 @@
             "toPlayOnCollision": false,
             "isSpacial": true,
             "spacialDistance": 1.0,
-            "spacialRatio": 1.2000000476837158
+            "spacialRatio": 2.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -424,6 +469,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -580,6 +640,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -757,7 +832,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -680.0,
-                "Y": -4200.0
+                "Y": -4190.0
             }
         },
         "Sprite": {
@@ -788,6 +863,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -943,7 +1033,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -1500.0,
-                "Y": -4190.0
+                "Y": -4180.0
             }
         },
         "Sprite": {
@@ -974,6 +1064,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -1027,6 +1132,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -1078,6 +1198,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -1131,6 +1266,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "01.Daytime_Forest_Field_Sun_Loop",
+            "toPlay": true,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": true,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": true,
+            "spacialDistance": 2.0,
+            "spacialRatio": 4.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -1182,6 +1332,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -1307,7 +1472,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -3370.0,
-                "Y": -4470.0
+                "Y": -4460.0
             }
         },
         "Sprite": {
@@ -1338,6 +1503,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -1390,6 +1570,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -4107,6 +4302,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -5206,6 +5416,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -7835,6 +8060,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -8179,6 +8419,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -8319,7 +8574,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -4090.0,
-                "Y": -3250.0
+                "Y": -3240.0
             }
         },
         "Sprite": {
@@ -8815,6 +9070,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -8986,6 +9256,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -12846,6 +13131,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -13635,6 +13935,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -13790,6 +14105,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14107,6 +14437,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -14225,6 +14570,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -14550,6 +14910,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -16394,6 +16769,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -16778,6 +17168,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -16829,6 +17234,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [
@@ -30637,6 +31057,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -30688,6 +31123,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -30946,6 +31396,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -38617,6 +39082,21 @@
             "isTrigger": false,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
@@ -39080,6 +39560,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -41208,6 +41703,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
@@ -43797,6 +44307,21 @@
             },
             "isTrigger": false,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Tree_Collision",
+            "toPlay": false,
+            "volume": 0.5,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": true,
+            "isSpacial": true,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "ShadowCaster": {
             "centerOffsets": [],
