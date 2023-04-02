@@ -191,7 +191,7 @@
         "SceneName": "Game Over",
         "isActive": true,
         "mForceRender": false,
-        "layer": 0,
+        "layer": 10,
         "order": 0
     }
 ]

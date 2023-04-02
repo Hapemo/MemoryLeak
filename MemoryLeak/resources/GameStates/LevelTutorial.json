@@ -12,7 +12,7 @@
                 "Y": 405.0091247558594
             }
         },
-        "isActive": false,
+        "isActive": true,
         "mForceRender": false,
         "layer": 3,
         "order": 3
@@ -47,28 +47,28 @@
     },
     {
         "SceneName": "TutorialDialogue",
-        "isActive": false,
+        "isActive": true,
         "mForceRender": false,
         "layer": 6,
         "order": 7
     },
     {
         "SceneName": "FPS",
-        "isActive": false,
+        "isActive": true,
         "mForceRender": false,
         "layer": 15,
         "order": 0
     },
     {
         "SceneName": "Transition",
-        "isActive": false,
+        "isActive": true,
         "mForceRender": false,
         "layer": 11,
         "order": 0
     },
     {
         "SceneName": "TutorialUI",
-        "isActive": false,
+        "isActive": true,
         "mForceRender": false,
         "layer": 7,
         "order": 0
@@ -86,7 +86,7 @@
                 "Y": 405.0091247558594
             }
         },
-        "isActive": false,
+        "isActive": true,
         "mForceRender": false,
         "layer": 0,
         "order": 0
@@ -104,14 +104,14 @@
                 "Y": 405.0091247558594
             }
         },
-        "isActive": false,
+        "isActive": true,
         "mForceRender": false,
-        "layer": 8,
+        "layer": 14,
         "order": 0
     },
     {
         "SceneName": "TutorialNameFade",
-        "isActive": false,
+        "isActive": true,
         "mForceRender": false,
         "layer": 15,
         "order": 0
