@@ -114,6 +114,7 @@ void AudioManager::UpdateSound()
     {
         for (const Entity& e : mEntities)
         {
+            assert(e.GetComponent<Audio>().sound.path != "" && "Audio path not loaded");
             if (!e.ShouldRun())
             {
                 if (e.GetComponent<Audio>().sound.channel != 0)
@@ -232,12 +233,12 @@ void AudioManager::PlaySound(const Entity& e)
 {
     if (!e.HasComponent<Audio>())
         return;
+    assert(e.GetComponent<Audio>().sound.path != "" && "Audio path not loaded");
     std::string snd = e.GetComponent<Audio>().sound.path;
     if (e.GetComponent<Audio>().sound.channel == 0)
     {
         e.GetComponent<Audio>().sound.channel = AddChannel();
     }
-    std::cout << "DO not use this audio : " << snd << "\n";
     int channel = (int)E_AUDIO_CHANNEL::TESTING;
     if (isPlaying(channel))
     {
