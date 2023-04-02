@@ -104,6 +104,7 @@
     <Compile Include="Level3\SwitchToFinal.cs" />
     <Compile Include="PassengerDeliverUI.cs" />
     <Compile Include="GoToMainMenu.cs" />
+    <Compile Include="GameOver.cs" />
     <Compile Include="ToggleFullScreen.cs" />
     <Compile Include="ScriptTemplate_DONOTDELETE.cs" />
     <Compile Include="ChoiceHover.cs" />
