@@ -3021,7 +3021,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "^Try chooing  an option!",
+            "text": "^Try choosing  an option!",
             "offset": {
                 "X": 119.0,
                 "Y": -48.0

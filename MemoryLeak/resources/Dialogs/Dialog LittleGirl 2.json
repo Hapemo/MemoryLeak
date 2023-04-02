@@ -1,7 +1,7 @@
 [
  {
    "Dialogue ID": 1,
-   "Dialogue Text": "Hey! How've your journey been? I've been eager to meet you again!",
+   "Dialogue Text": "Hey! How has your journey been? I've been eager to meet you again!",
    "Speaker": 0,
    "Next Dialogue": 2,
    "Next Dialogue(2)": 0
@@ -29,7 +29,7 @@
  },
  {
    "Dialogue ID": 5,
-   "Dialogue Text": "No matter how many relics I collected along the way, nothing beats the gift you once tried to give me.",
+   "Dialogue Text": "No matter how many relics I collected along the way, nothing beats the gifts you brought for me.",
    "Speaker": 0,
    "Next Dialogue": 6,
    "Next Dialogue(2)": 0
@@ -43,77 +43,21 @@
  },
  {
    "Dialogue ID": 7,
-   "Dialogue Text": "You always give me things on my birthday! Have you forgotten?",
+   "Dialogue Text": "You always give me things on my birthday! Did you forget?",
    "Speaker": 0,
    "Next Dialogue": 8,
    "Next Dialogue(2)": 0
  },
  {
    "Dialogue ID": 8,
-   "Dialogue Text": "What did I give to you this time?",
+   "Dialogue Text": "I think I remember something...",
    "Speaker": 1,
    "Next Dialogue": 9,
    "Next Dialogue(2)": 0
  },
  {
    "Dialogue ID": 9,
-   "Dialogue Text": "Hmm... I don't know really. All I remember when I came to was that I was yearning for your gift.",
-   "Speaker": 0,
-   "Next Dialogue": 10,
-   "Next Dialogue(2)": 0
- },
- {
-   "Dialogue ID": 10,
-   "Dialogue Text": "Hehe, why don't you handpick a personal one from your collection?",
-   "Speaker": 0,
-   "Next Dialogue": 11,
-   "Next Dialogue(2)": 0
- },
- {
-   "Dialogue ID": 11,
-   "Dialogue Text": "(Choose the water globe with a floating empty boat)",
-   "Speaker": 1,
-   "Next Dialogue": 13,
-   "Next Dialogue(2)": 0
- },
- {
-   "Dialogue ID": 12,
-   "Dialogue Text": "(Choose the globe with a tree surrounded by dazzling lights)",
-   "Speaker": 1,
-   "Next Dialogue": 13,
-   "Next Dialogue(2)": 0
- },
- {
-   "Dialogue ID": 13,
-   "Dialogue Text": "...No, I don't want it.",
-   "Speaker": 0,
-   "Next Dialogue": 14,
-   "Next Dialogue(2)": 0
- },
- {
-   "Dialogue ID": 14,
-   "Dialogue Text": "I'm sorry...",
-   "Speaker": 0,
-   "Next Dialogue": 15,
-   "Next Dialogue(2)": 0
- },
- {
-   "Dialogue ID": 15,
-   "Dialogue Text": "***er, have you really forgotten what you tried to give me?",
-   "Speaker": 0,
-   "Next Dialogue": 16,
-   "Next Dialogue(2)": 0
- },
- {
-   "Dialogue ID": 16,
-   "Dialogue Text": "Meet me again when you find your answer.",
-   "Speaker": 0,
-   "Next Dialogue": 17,
-   "Next Dialogue(2)": 0
- },
- {
-   "Dialogue ID": 17,
-   "Dialogue Text": "I'm not letting you go until I find it again... The precious gift ***er gave to me...",
+   "Dialogue Text": "I hope you get your memories back soon... *Fades away*",
    "Speaker": 0,
    "Next Dialogue": 0,
    "Next Dialogue(2)": 0

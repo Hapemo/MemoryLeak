@@ -27,12 +27,6 @@ D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.csproj.CoreCompileInputs.cache
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.dll
 D:\Heart\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.pdb
-C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\bin\Release\x64\SCRIPTING\Scripting.dll
-C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\bin\Release\x64\SCRIPTING\Scripting.pdb
-C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.csproj.AssemblyReference.cache
-C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.csproj.CoreCompileInputs.cache
-C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.dll
-C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.pdb
 C:\Users\j.teoh\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Release\x64\SCRIPTING\Scripting.dll
 C:\Users\j.teoh\Documents\GitHub\MemoryLeak\MemoryLeak\bin\Release\x64\SCRIPTING\Scripting.pdb
 C:\Users\j.teoh\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.csproj.AssemblyReference.cache
@@ -43,3 +37,8 @@ C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\
 C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.csproj.CoreCompileInputs.cache
 C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.dll
 C:\Users\l.hsienweijoachim\Documents\GitHub\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.pdb
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\bin\Release\x64\SCRIPTING\Scripting.dll
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\bin\Release\x64\SCRIPTING\Scripting.pdb
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Release\SCRIPTING.csproj.CoreCompileInputs.cache
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.dll
+C:\Users\kew\OneDrive\Desktop\MemoryLeak\MemoryLeak\Scripting\obj\Release\Scripting.pdb

@@ -180,7 +180,7 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Your health will decrease when enmy is attacking you!",
+            "text": "Your health will decrease when enemy is attacking you!",
             "offset": {
                 "X": -147.0,
                 "Y": 5.0
