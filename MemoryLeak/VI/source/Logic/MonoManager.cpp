@@ -139,6 +139,8 @@ MonoObject* MonoManager::InstantiateClass(const char* _namespace, const char* _c
 	}
 	else LOG_CUSTOM("Mono", "Allocated an instance to Mono class " + namespaceStr + "::" + classStr + "."); 
 
+	mMonoHandler = mono_gchandle_new(classInstance, true);
+
 	// Call the parameterless (default) constructor
 	mono_runtime_object_init(classInstance);
 	return classInstance;
@@ -164,7 +166,7 @@ void MonoManager::CallMethod(std::string _scriptName, const char* _function, int
 	// No method called "Init" with 0 parameters in the class
 	if (method == nullptr) {
 		std::string funcStr = _function;
-		//LOG_CUSTOM("Mono", "Method " + funcStr + "() does not exist!");
+		LOG_CUSTOM("Mono", "Method " + funcStr + "() does not exist!");
 	}
 	else {
 		// Call the C# method on the objectInstance instance, and get any potential exceptions
@@ -178,10 +180,10 @@ void MonoManager::CallMethod(std::string _scriptName, const char* _function, int
 			MonoString* exceptionString = mono_object_to_string(exception, nullptr);
 			const char* exceptionCString = mono_string_to_utf8(exceptionString);
 			std::string exceptionStr = exceptionCString;
-			//LOG_CUSTOM("Mono", "Failed to call method " + funcStr + "()!");
-			//LOG_CUSTOM("Mono", exceptionStr);
+			LOG_CUSTOM("Mono", "Failed to call method " + funcStr + "()!");
+			LOG_CUSTOM("Mono", exceptionStr);
 			LOG_ERROR(exceptionStr);
-			//mono_print_unhandled_exception(exception);
+			mono_print_unhandled_exception(exception);
 #ifdef _DEBUG
 			BREAKPOINT(true);
 #endif
@@ -195,16 +197,14 @@ Register the C# scripts to store internally for the logic system to use.
 *******************************************************************************/
 void MonoManager::RegisterMonoScript(std::string _namespace, std::string _class) {
 	if (GetMonoComponent(_class) != nullptr) return;
-	//LOG_CUSTOM("Mono", "Registering C# script method " + _namespace + "::" + _class + "()...");
+	LOG_CUSTOM("Mono", "Registering C# script method " + _namespace + "::" + _class + "()...");
 
 	// Loading mono image
 	MonoObject* newInstance = InstantiateClass(_namespace.c_str(), _class.c_str());
 
 	// Storing mono object
 	if (newInstance != nullptr) SetMonoComponent(_class, newInstance);
-	else //LOG_CUSTOM("Mono", "Failed to register C# script method " + _namespace + "::" + _class + "()!"); 
-
-	mMonoHandler = mono_gchandle_new_weakref(newInstance, true);
+	else LOG_CUSTOM("Mono", "Failed to register C# script method " + _namespace + "::" + _class + "()!");
 }
 
 /*!*****************************************************************************
