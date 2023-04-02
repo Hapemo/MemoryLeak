@@ -25008,17 +25008,6 @@
             "isTrigger": true,
             "renderFlag": true
         },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "renderFlag": false
-        },
         "Audio": {
             "path": "Fetching_Passenger",
             "toPlay": false,
