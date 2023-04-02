@@ -5608,6 +5608,21 @@
             "isTrigger": true,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Fetching_Passenger",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "Script": {
             "name": "Level2Passenger1Script"
         },
@@ -5737,6 +5752,21 @@
             },
             "isTrigger": true,
             "renderFlag": true
+        },
+        "Audio": {
+            "path": "Fetching_Passenger",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Script": {
             "name": "Level2Passenger2Script"

@@ -17228,21 +17228,6 @@
             },
             "renderFlag": true
         },
-        "Audio": {
-            "path": "Relic_Fail",
-            "toPlay": false,
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "toPlayOnCollision": true,
-            "isSpacial": false,
-            "spacialDistance": 1.0,
-            "spacialRatio": 1.0
-        },
         "ShadowCaster": {
             "centerOffsets": [
                 {
@@ -19596,21 +19581,6 @@
             "isTrigger": false,
             "renderFlag": true
         },
-        "Audio": {
-            "path": "Relic_Fail",
-            "toPlay": false,
-            "volume": 1.0,
-            "volumeMod": 1.0,
-            "pitch": 1.0,
-            "isPaused": false,
-            "isMute": false,
-            "isLoop": false,
-            "isRandPitch": false,
-            "toPlayOnCollision": true,
-            "isSpacial": false,
-            "spacialDistance": 1.5,
-            "spacialRatio": 2.0
-        },
         "ShadowCaster": {
             "centerOffsets": [
                 {
@@ -20520,69 +20490,6 @@
             },
             "scaleOffset": {
                 "X": 0.10000000149011612,
-                "Y": 0.44999998807907104
-            },
-            "isTrigger": false,
-            "renderFlag": true
-        },
-        "LayerCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 0.0010000000474974513
-            },
-            "renderFlag": true
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 400.0,
-                "Y": 460.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -1710.0,
-                "Y": 450.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree1_Spritesheet.png",
-            "layer": 702
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 15.0,
-                "Y": -100.0
-            },
-            "scaleOffset": {
-                "X": 0.6000000238418579,
                 "Y": 0.44999998807907104
             },
             "isTrigger": false,
@@ -23160,7 +23067,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Ruin5_Spritesheet.png",
-            "layer": 700
+            "layer": 705
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -24956,6 +24863,21 @@
             "isTrigger": true,
             "renderFlag": true
         },
+        "Audio": {
+            "path": "Fetching_Passenger",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        },
         "Script": {
             "name": "Level3Passenger1Script"
         },
@@ -25096,6 +25018,21 @@
                 "Y": 1.0
             },
             "renderFlag": false
+        },
+        "Audio": {
+            "path": "Fetching_Passenger",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Script": {
             "name": "Level3Passenger2Script"

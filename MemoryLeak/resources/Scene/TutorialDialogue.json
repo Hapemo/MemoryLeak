@@ -39,7 +39,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -57,9 +59,6 @@
             },
             "followCam": false,
             "width": 0.0
-        },
-        "Button": {
-            "interactable": true
         }
     },
     {
@@ -102,7 +101,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -120,9 +121,6 @@
             },
             "followCam": false,
             "width": 0.0
-        },
-        "Button": {
-            "interactable": true
         }
     },
     {
@@ -165,7 +163,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -183,9 +183,6 @@
             },
             "followCam": false,
             "width": 20.0
-        },
-        "Button": {
-            "interactable": true
         }
     },
     {
@@ -228,7 +225,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -291,7 +290,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -354,7 +355,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -372,9 +375,6 @@
             },
             "followCam": false,
             "width": 0.0
-        },
-        "Button": {
-            "interactable": true
         }
     },
     {
@@ -417,7 +417,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -435,9 +437,6 @@
             },
             "followCam": false,
             "width": 0.0
-        },
-        "Button": {
-            "interactable": true
         }
     },
     {
@@ -488,6 +487,141 @@
         },
         "Button": {
             "interactable": true
+        }
+    },
+    {
+        "General": {
+            "name": "Dpopup",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 63
+        },
+        "Audio": {
+            "path": "Dialog_Popup",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        }
+    },
+    {
+        "General": {
+            "name": "Dadvance",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 20.0,
+                "Y": 20.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 63
+        },
+        "Audio": {
+            "path": "Dialog(Edited)",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
+        }
+    },
+    {
+        "General": {
+            "name": "Dchoise",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 40.0,
+                "Y": 40.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 63
+        },
+        "Audio": {
+            "path": "Dialog_Click_Choice",
+            "toPlay": false,
+            "volume": 1.0,
+            "volumeMod": 1.0,
+            "pitch": 1.0,
+            "isPaused": false,
+            "isMute": false,
+            "isLoop": false,
+            "isRandPitch": false,
+            "toPlayOnCollision": false,
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         }
     }
 ]

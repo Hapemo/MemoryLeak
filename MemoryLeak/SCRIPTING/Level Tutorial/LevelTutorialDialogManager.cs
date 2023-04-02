@@ -104,7 +104,9 @@ namespace BonVoyage {
         MovePlayer(playerID, 385, -1170); // Move him to better location
         runPassengerDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialog NPC"); // Run the dialog
         if (!runPassengerDialog)
+                {
           EndPassengerDialog();
+                }
       }
 
       if (runPassengerEndDialog) {
