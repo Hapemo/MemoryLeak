@@ -52,7 +52,7 @@
         "SceneName": "Transition",
         "isActive": false,
         "mForceRender": false,
-        "layer": 15,
+        "layer": 14,
         "order": 0
     },
     {
@@ -78,6 +78,13 @@
         "isActive": false,
         "mForceRender": false,
         "layer": 1,
+        "order": 0
+    },
+    {
+        "SceneName": "OpeningCredits",
+        "isActive": false,
+        "mForceRender": false,
+        "layer": 15,
         "order": 0
     }
 ]
