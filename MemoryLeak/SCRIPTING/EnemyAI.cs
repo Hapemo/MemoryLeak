@@ -69,9 +69,9 @@ namespace BonVoyage
             ChangeState(EnemyState.IDLE);
             currlevel = VI.GameState.GetName();
             if (currlevel == "Level2")
-                enemySpeed = 0.9f;
+                enemySpeed = 0.92f;
             else if(currlevel == "Level3")
-                enemySpeed = 0.95f;
+                enemySpeed = 0.97f;
         }
 
         public void EarlyUpdate(int _ENTITY)
@@ -134,7 +134,7 @@ namespace BonVoyage
                     {
                         eState = EnemyState.ATTACK2;
                         if (!VI.Physics.IsCollided(PlayerId, THIS.GetId()))
-                            ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed * 0.5f* enemySpeed * rainSpeed);
+                            ApplyForce(_ENTITY, diffx, diffy, PlayerScript.PlayerSpeed * 0.7f* enemySpeed * rainSpeed);
                         //minus health
                     }
                     else
