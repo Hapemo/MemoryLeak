@@ -4298,20 +4298,20 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -4960.0,
-                "Y": 1090.0
+                "X": -4690.0,
+                "Y": 1960.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 88,
+                "g": 88,
+                "b": 88,
                 "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree5_Spritesheet.png",
-            "layer": 710
+            "layer": 658
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -4378,20 +4378,20 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -5150.0,
-                "Y": 930.0
+                "X": -4450.0,
+                "Y": 2190.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 201,
+                "g": 201,
+                "b": 201,
                 "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree2_Spritesheet.png",
-            "layer": 711
+            "layer": 650
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -4705,25 +4705,25 @@
         },
         "Transform": {
             "scale": {
-                "X": 377.5,
+                "X": -375.5,
                 "Y": 537.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": -5150.0,
-                "Y": 530.0
+                "X": -4640.0,
+                "Y": 2180.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 118,
+                "g": 118,
+                "b": 118,
                 "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree2_Spritesheet.png",
-            "layer": 713
+            "layer": 656
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -5572,20 +5572,20 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -4850.0,
-                "Y": -250.0
+                "X": -4430.0,
+                "Y": 2020.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 205,
+                "g": 205,
+                "b": 205,
                 "a": 255
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree1_Spritesheet.png",
-            "layer": 717
+            "layer": 656
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -13914,8 +13914,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1240.0,
-                "Y": 2390.0
+                "X": 1780.0,
+                "Y": 2590.0
             }
         },
         "Sprite": {
@@ -13994,8 +13994,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 1760.0,
-                "Y": 2460.0
+                "X": 2230.0,
+                "Y": 2550.0
             }
         },
         "Sprite": {
@@ -14008,46 +14008,6 @@
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree1_Spritesheet.png",
             "layer": 704
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 362.5,
-                "Y": 522.5
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 1500.0,
-                "Y": 2330.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree2_Spritesheet.png",
-            "layer": 705
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -15828,46 +15788,6 @@
         },
         "Transform": {
             "scale": {
-                "X": 417.5,
-                "Y": 417.5
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 2820.0,
-                "Y": 2070.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Tree3_Spritesheet.png",
-            "layer": 708
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Tree",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
                 "X": 407.5,
                 "Y": 467.5
             },
@@ -16915,46 +16835,6 @@
         },
         "Transform": {
             "scale": {
-                "X": -745.0,
-                "Y": 745.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 2160.0,
-                "Y": 2360.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Pillar1_Spritesheet.png",
-            "layer": 705
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": false
-        }
-    },
-    {
-        "General": {
-            "name": "Ruin",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
                 "X": 745.0,
                 "Y": 745.0
             },
@@ -16973,7 +16853,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Ruin4_Spritesheet.png",
-            "layer": 900
+            "layer": 398
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -17720,8 +17600,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2340.0,
-                "Y": 2090.0
+                "X": 2040.0,
+                "Y": 2380.0
             }
         },
         "Sprite": {
@@ -18652,8 +18532,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2570.0,
-                "Y": 2040.0
+                "X": 2330.0,
+                "Y": 2320.0
             }
         },
         "Sprite": {
@@ -18692,8 +18572,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2850.0,
-                "Y": 1770.0
+                "X": 2770.0,
+                "Y": 2060.0
             }
         },
         "Sprite": {
@@ -19061,46 +18941,6 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 2800.0,
-                "Y": -2650.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
-                "a": 255
-            },
-            "sprite": 2,
-            "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Pillar1_Spritesheet.png",
-            "layer": 899
-        },
-        "SheetAnimation": {
-            "frameCount": 3,
-            "currFrameIndex": 0,
-            "timePerFrame": 0.10000000149011612,
-            "timeToFrameSwap": 0.0
-        },
-        "ShadowCaster": {
-            "centerOffsets": [],
-            "renderFlag": true
-        }
-    },
-    {
-        "General": {
-            "name": "Ruin",
-            "tag": 5,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 745.0,
-                "Y": 745.0
-            },
-            "rotation": 0.0,
-            "translation": {
                 "X": 2540.0,
                 "Y": -3010.0
             }
@@ -19114,7 +18954,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Region3_Ruin4_Spritesheet.png",
-            "layer": 900
+            "layer": 398
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -21646,7 +21486,7 @@
             "name": "P1WrongDropOffPoint",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -21722,7 +21562,7 @@
             "name": "P2CorrectDropOffPoint",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -21732,7 +21572,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -2250.0,
-                "Y": 2921.0
+                "Y": 2920.0
             }
         },
         "Sprite": {
@@ -21798,7 +21638,7 @@
             "name": "P2WrongDropOffPoint",
             "tag": 8,
             "subtag": 0,
-            "isActive": true
+            "isActive": false
         },
         "Transform": {
             "scale": {
@@ -21807,8 +21647,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2453.0,
-                "Y": -286.0
+                "X": -2450.0,
+                "Y": -280.0
             }
         },
         "Sprite": {
@@ -22342,8 +22182,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 3370.0,
-                "Y": -2720.0
+                "X": 3470.0,
+                "Y": -2640.0
             }
         },
         "Sprite": {
@@ -23332,12 +23172,12 @@
         },
         "RectCollider": {
             "centerOffset": {
-                "X": 3.5,
-                "Y": -164.89999389648438
+                "X": 34.20000076293945,
+                "Y": -133.39999389648438
             },
             "scaleOffset": {
                 "X": 0.7300000190734863,
-                "Y": 0.4000000059604645
+                "Y": 0.25
             },
             "isTrigger": false,
             "renderFlag": true
@@ -23691,7 +23531,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Props_Porthouse.png",
-            "layer": 900
+            "layer": 399
         },
         "RectCollider": {
             "centerOffset": {
@@ -24085,20 +23925,20 @@
         },
         "Transform": {
             "scale": {
-                "X": -553.75634765625,
-                "Y": 327.59576416015625
+                "X": -753.7559814453125,
+                "Y": 421.59600830078125
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2920.0,
-                "Y": 410.0
+                "X": -4470.0,
+                "Y": 1700.0
             }
         },
         "Sprite": {
             "color": {
-                "r": 80,
-                "g": 80,
-                "b": 80,
+                "r": 125,
+                "g": 125,
+                "b": 125,
                 "a": 255
             },
             "sprite": 2,
@@ -24110,18 +23950,6 @@
             "currFrameIndex": 0,
             "timePerFrame": 0.10000000149011612,
             "timeToFrameSwap": 0.0
-        },
-        "RectCollider": {
-            "centerOffset": {
-                "X": 0.0,
-                "Y": 0.0
-            },
-            "scaleOffset": {
-                "X": 1.0,
-                "Y": 1.0
-            },
-            "isTrigger": false,
-            "renderFlag": true
         },
         "ShadowCaster": {
             "centerOffsets": [
@@ -24454,7 +24282,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Spritesheets\\PROPS\\Props_Building2_spritesheet.png",
-            "layer": 900
+            "layer": 399
         },
         "SheetAnimation": {
             "frameCount": 3,
@@ -36807,12 +36635,12 @@
         "Transform": {
             "scale": {
                 "X": 100.0,
-                "Y": 300.0
+                "Y": 87.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": -80.0,
-                "Y": -290.0
+                "X": -100.0,
+                "Y": -60.0
             }
         },
         "Sprite": {
