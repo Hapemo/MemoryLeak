@@ -74,6 +74,9 @@
             "acceleration": 0.0,
             "moveOnHover": false,
             "moveOnCollide": false,
+            "moveScale": true,
+            "moveRotate": true,
+            "moveTranslation": true,
             "targets": [
                 {
                     "time": 2.0,

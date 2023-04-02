@@ -4,15 +4,16 @@
         "Transform": {
             "scale": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 90.0
             },
-            "rotation": 1.0,
+            "rotation": 10.0,
             "translation": {
                 "X": 0.0,
                 "Y": 0.0
             }
         },
         "isActive": false,
+        "mForceRender": false,
         "layer": 0,
         "order": 0
     },
@@ -21,15 +22,16 @@
         "Transform": {
             "scale": {
                 "X": 0.0,
-                "Y": 0.0
+                "Y": 90.0
             },
-            "rotation": 1.0,
+            "rotation": 10.0,
             "translation": {
                 "X": 0.0,
                 "Y": 0.0
             }
         },
         "isActive": true,
+        "mForceRender": false,
         "layer": 0,
         "order": 0
     }

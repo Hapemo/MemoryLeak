@@ -11,7 +11,7 @@ The ResourceManager class manages the resources, their data and usage.
 *******************************************************************************/
 
 #pragma once
-#define MultiThread 1 // 1 to multi thread, 0 to not multi thread.
+#define MultiThread 0 // 1 to multi thread, 0 to not multi thread.
 
 #include <sys/types.h>
 #include <sys/stat.h>
