@@ -2304,8 +2304,8 @@
         },
         "Transform": {
             "scale": {
-                "X": -935.0,
-                "Y": 645.0
+                "X": -927.5,
+                "Y": 652.5
             },
             "rotation": 0.0,
             "translation": {
@@ -30565,8 +30565,8 @@
         },
         "Transform": {
             "scale": {
-                "X": 349.0,
-                "Y": 507.6363525390625
+                "X": 359.0,
+                "Y": 517.6363525390625
             },
             "rotation": 0.0,
             "translation": {
@@ -32314,6 +32314,39 @@
         "ShadowCaster": {
             "centerOffsets": [],
             "renderFlag": false
+        }
+    },
+    {
+        "General": {
+            "name": "GameOverController",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -2150.0,
+                "Y": 1560.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "sprite": 1,
+            "texture": "",
+            "layer": 5
+        },
+        "Script": {
+            "name": "GameOver"
         }
     }
 ]
