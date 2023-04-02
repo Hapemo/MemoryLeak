@@ -8,13 +8,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 150.0,
-                "Y": 150.0
+                "X": 120.0,
+                "Y": 120.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -450.0,
-                "Y": 70.0
+                "X": -480.0,
+                "Y": 200.0
             }
         },
         "Sprite": {
@@ -30,9 +30,9 @@
         },
         "SheetAnimation": {
             "frameCount": 10,
-            "currFrameIndex": 8,
+            "currFrameIndex": 9,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.033333346247673035
+            "timeToFrameSwap": 0.13333334028720856
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -41,7 +41,7 @@
                 "X": 90.0,
                 "Y": -15.0
             },
-            "scale": 0.800000011920929,
+            "scale": 0.699999988079071,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -108,13 +108,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 75.0,
-                "Y": 100.0
+                "X": 50.0,
+                "Y": 85.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -450.0,
-                "Y": -45.0
+                "X": -480.0,
+                "Y": 100.0
             }
         },
         "Sprite": {
@@ -132,7 +132,7 @@
             "frameCount": 8,
             "currFrameIndex": 6,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.06666667759418488
+            "timeToFrameSwap": 1.1175870895385742e-8
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -141,7 +141,7 @@
                 "X": 95.0,
                 "Y": -15.0
             },
-            "scale": 0.800000011920929,
+            "scale": 0.699999988079071,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -161,13 +161,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 75.0,
-                "Y": 100.0
+                "X": 50.0,
+                "Y": 85.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -450.0,
-                "Y": -160.0
+                "X": -480.0,
+                "Y": 0.0
             }
         },
         "Sprite": {
@@ -185,7 +185,7 @@
             "frameCount": 8,
             "currFrameIndex": 6,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.06666667759418488
+            "timeToFrameSwap": 1.1175870895385742e-8
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -194,7 +194,7 @@
                 "X": 90.0,
                 "Y": -15.0
             },
-            "scale": 0.800000011920929,
+            "scale": 0.699999988079071,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -214,13 +214,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 75.0,
-                "Y": 100.0
+                "X": 50.0,
+                "Y": 85.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -450.0,
-                "Y": -275.0
+                "X": -480.0,
+                "Y": -100.0
             }
         },
         "Sprite": {
@@ -238,7 +238,7 @@
             "frameCount": 8,
             "currFrameIndex": 6,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.06666667759418488
+            "timeToFrameSwap": 1.1175870895385742e-8
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -247,7 +247,7 @@
                 "X": 90.0,
                 "Y": -15.0
             },
-            "scale": 0.800000011920929,
+            "scale": 0.699999988079071,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -267,13 +267,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 75.0,
-                "Y": 100.0
+                "X": 50.0,
+                "Y": 85.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 140.0,
-                "Y": 70.0
+                "X": 50.0,
+                "Y": 200.0
             }
         },
         "Sprite": {
@@ -291,7 +291,7 @@
             "frameCount": 8,
             "currFrameIndex": 6,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.06666667759418488
+            "timeToFrameSwap": 1.1175870895385742e-8
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -300,7 +300,7 @@
                 "X": 90.0,
                 "Y": -15.0
             },
-            "scale": 0.800000011920929,
+            "scale": 0.699999988079071,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -320,13 +320,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 75.0,
-                "Y": 100.0
+                "X": 50.0,
+                "Y": 85.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 140.0,
-                "Y": -45.0
+                "X": 50.0,
+                "Y": 100.0
             }
         },
         "Sprite": {
@@ -344,7 +344,7 @@
             "frameCount": 8,
             "currFrameIndex": 6,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.06666667759418488
+            "timeToFrameSwap": 1.1175870895385742e-8
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -353,7 +353,7 @@
                 "X": 90.0,
                 "Y": -15.0
             },
-            "scale": 0.800000011920929,
+            "scale": 0.699999988079071,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -373,13 +373,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 75.0,
-                "Y": 100.0
+                "X": 70.0,
+                "Y": 70.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 140.0,
-                "Y": -160.0
+                "X": 50.0,
+                "Y": 0.0
             }
         },
         "Sprite": {
@@ -397,7 +397,7 @@
             "frameCount": 8,
             "currFrameIndex": 6,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.06666667759418488
+            "timeToFrameSwap": 1.1175870895385742e-8
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -406,7 +406,7 @@
                 "X": 90.0,
                 "Y": -15.0
             },
-            "scale": 0.800000011920929,
+            "scale": 0.699999988079071,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -426,13 +426,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 75.0,
-                "Y": 100.0
+                "X": 50.0,
+                "Y": 75.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 140.0,
-                "Y": -275.0
+                "X": 50.0,
+                "Y": -100.0
             }
         },
         "Sprite": {
@@ -450,7 +450,7 @@
             "frameCount": 8,
             "currFrameIndex": 2,
             "timePerFrame": 0.15000000596046448,
-            "timeToFrameSwap": 0.06666667759418488
+            "timeToFrameSwap": 1.1175870895385742e-8
         },
         "Text": {
             "fontFile": "BPtypewrite",
@@ -459,7 +459,7 @@
                 "X": 90.0,
                 "Y": -15.0
             },
-            "scale": 0.800000011920929,
+            "scale": 0.699999988079071,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -510,7 +510,9 @@
             "isLoop": false,
             "isRandPitch": false,
             "toPlayOnCollision": false,
-            "isSpacial": false
+            "isSpacial": false,
+            "spacialDistance": 1.0,
+            "spacialRatio": 1.0
         },
         "Script": {
             "name": "BackButton"
@@ -547,6 +549,899 @@
             "sprite": 0,
             "texture": "",
             "layer": 0
+        }
+    },
+    {
+        "General": {
+            "name": "Faculty",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -470.0,
+                "Y": -190.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Faculty and Advisors",
+            "offset": {
+                "X": -25.0,
+                "Y": 0.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -221.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -490.0,
+                "Y": -240.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Elie Hosry",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -490.0,
+                "Y": -270.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Jing Ying Goh",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -490.0,
+                "Y": -300.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Holger Liebnitz",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -240.0,
+                "Y": -240.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Choon Wee Keh",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -240.0,
+                "Y": -270.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Vuk Krakovic",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -240.0,
+                "Y": -300.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Alwyn Lee",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Faculty",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -470.0,
+                "Y": -320.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Created at ",
+            "offset": {
+                "X": -25.0,
+                "Y": 0.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -221.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -490.0,
+                "Y": -370.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "DigiPen Institute of Technology",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Faculty",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 70.0,
+                "Y": -320.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "President",
+            "offset": {
+                "X": -25.0,
+                "Y": 0.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -221.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 50.0,
+                "Y": -370.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Claude Comair",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Faculty",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 70.0,
+                "Y": -190.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Executives",
+            "offset": {
+                "X": -25.0,
+                "Y": 0.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -221.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 350.0,
+                "Y": -210.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Jason Chu",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 50.0,
+                "Y": -240.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Christopher Comair",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 350.0,
+                "Y": -240.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Michael Gats",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 50.0,
+                "Y": -270.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Michele Comair",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 350.0,
+                "Y": -270.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Raymond Yan",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 350.0,
+                "Y": -300.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Prasanna Ghali",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Names",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 50.0,
+                "Y": -300.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Samir Abou Samra",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
         }
     }
 ]
