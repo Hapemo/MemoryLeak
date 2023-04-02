@@ -26,7 +26,37 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Env_Water_Purple.png",
-            "layer": 1
+            "layer": 2
+        }
+    },
+    {
+        "General": {
+            "name": "FakeWater",
+            "tag": 4,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 25000.0,
+                "Y": 20500.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 0.0,
+                "Y": 0.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 180
+            },
+            "sprite": 2,
+            "texture": "Textures\\Sprites\\Env_Water_Purple.png",
+            "layer": 0
         }
     },
     {
@@ -56,7 +86,7 @@
             },
             "sprite": 1,
             "texture": "",
-            "layer": 2
+            "layer": 3
         },
         "ParticleSystem": {
             "mParticleInfo": {
@@ -120,7 +150,7 @@
             },
             "sprite": 2,
             "texture": "Textures\\Sprites\\Env_Water_Purple.png",
-            "layer": 0
+            "layer": 1
         },
         "AI": {
             "colorChange": 3,
