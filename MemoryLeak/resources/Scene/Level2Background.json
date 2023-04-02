@@ -27,9 +27,6 @@
             "sprite": 2,
             "texture": "Textures\\Sprites\\Env_Water_Green.png",
             "layer": 2
-        },
-        "Script": {
-            "name": "WaterTutorialSound"
         }
     },
     {
