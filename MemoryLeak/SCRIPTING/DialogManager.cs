@@ -310,7 +310,10 @@ namespace BonVoyage {
                 }
       } else if (VI.Input.Mouse.Press())//(VI.Input.Button.s_Released(player, scene) || VI.Input.Button.s_Released(notPlayer, scene))
             {
-                VI.Audio.PlayNow(dadvance);
+                if (VI.Dialogue.Speaker.IsPlayer(VI.Dialogue.Current.GetId()))
+                    VI.Audio.PlayNow(dchoice);
+                else
+                    VI.Audio.PlayNow(dadvance);
 
                 updateChat = true;
             }
