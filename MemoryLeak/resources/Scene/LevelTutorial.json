@@ -14321,6 +14321,42 @@
                 }
             ],
             "renderFlag": true
+        },
+        "ColorAI": {
+            "run": false,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "spriteORtext": 0,
+            "changeOnHover": false,
+            "changeOnCollide": false,
+            "changeR": false,
+            "changeG": false,
+            "changeB": false,
+            "changeA": true,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 80,
+                        "g": 80,
+                        "b": 80,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 80,
+                        "g": 80,
+                        "b": 80,
+                        "a": 0
+                    }
+                }
+            ]
         }
     },
     {

@@ -34,7 +34,7 @@ namespace BonVoyage {
     private int PColliderBox;
     private int PEndColliderBox;
     private int tutorialGuider;
-
+        private int girl;
         private int tutorialName;
 
     public override void Alive(int _ENTITY) {
@@ -49,6 +49,7 @@ namespace BonVoyage {
       PEndColliderBox = VI.Entity.GetId("PassengerDropOffBox");
         tutorialGuider = VI.Entity.GetId("MoveToCatGuider");
             tutorialName = VI.Entity.GetId("TutorialName");
+            girl = VI.Entity.GetId("LittleGirl");
       dialogInit = true;
       runIntroDialog = true;
     }
@@ -82,7 +83,10 @@ namespace BonVoyage {
         MovePlayer(playerID, -250, -635);
         runGirlDialog = RunDialog(P1ID, G1ID, PP1ID, PP2ID, "Dialogue LittleGirl 0");
         if (!runGirlDialog)
+                {
           EndGirlDialog();
+                    VI.ColorAI.StartAnimation(girl);
+                }
       }
 
       if (runCatDialog) {

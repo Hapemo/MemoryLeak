@@ -51,7 +51,7 @@ namespace BonVoyage {
     
     static public bool runPassenger2Dialog;
     private int P2ColliderBox;
-
+        private int girl;
 
     public override void Alive(int _ENTITY) {
         base.Alive(_ENTITY);
@@ -65,8 +65,9 @@ namespace BonVoyage {
       LittleGirlColliderBox = VI.Entity.GetId(LittleGirlBoxString);
 
       dialogInit = true;
+            girl = VI.Entity.GetId("LittleGirl");
 
-      VI.Text.Update(UIObjectiveTextID, "Objective:Find the Little Girl");
+            VI.Text.Update(UIObjectiveTextID, "Objective:Find the Little Girl");
       VI.Entity.s_Deactivate(P2String);
       VI.Entity.Deactivate(P2ColliderBox);
     }
@@ -91,8 +92,10 @@ namespace BonVoyage {
         if (!runLittleGirlDialog) {
           VI.Text.Update(UIObjectiveTextID, "Objective: Continue finding the lost souls");
           GeneralEndDialog();
-        }
-      }
+                    VI.ColorAI.StartAnimation(girl);
+
+                }
+            }
 
       if (runPassengerDialog) {
         GeneralDialogStart(1);
