@@ -84,7 +84,7 @@ void GameState::Load(std::filesystem::path const& _path){
 	LOG_CUSTOM("GAMESTATE", "Load GameState: " + _path.string());
 	// Load relevant resources here, Game Mode only
 #ifndef _EDITOR
-	ResourceManager::GetInstance()->LoadGameStateResources(_path);
+	//ResourceManager::GetInstance()->LoadGameStateResources(_path);
 #endif
 	serializationManager->LoadGameState(*this, _path);
 	for (auto& scene : mScenes) {
@@ -104,7 +104,7 @@ void GameState::Unload() {
 		scene.Unload();
 	mScenes.clear();
 #ifndef _EDITOR
-	ResourceManager::GetInstance()->SelectiveUnloadAllResources();
+	// ResourceManager::GetInstance()->SelectiveUnloadAllResources();
 #endif
 }
 

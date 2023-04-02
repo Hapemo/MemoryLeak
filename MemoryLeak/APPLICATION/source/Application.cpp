@@ -65,13 +65,12 @@ void Application::SystemInit() {
   // Activate logic system & Mono
   logicSystem->Activate();
 
-#ifdef _EDITOR
+//#ifdef _EDITOR
 #ifdef _DEBUG
   if (Application::mLoadAllResources) // TODO: This should be removed during game launch.
 #endif
-  if (Application::mLoadAllResources) // TODO: This should be removed during game launch.
     ResourceManager::GetInstance()->LoadAllResources();
-#endif
+//#endif
 
 #ifdef _EDITOR
   editorManager->Init(); //need loaded resources
