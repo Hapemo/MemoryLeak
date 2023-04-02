@@ -21406,7 +21406,7 @@
             "name": "P1WrongDropOffPoint",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -21415,8 +21415,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -870.0,
-                "Y": 1830.0
+                "X": -897.0,
+                "Y": 1904.0
             }
         },
         "Sprite": {
@@ -21482,7 +21482,7 @@
             "name": "P2CorrectDropOffPoint",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -21491,8 +21491,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2270.0,
-                "Y": 2860.0
+                "X": -2250.0,
+                "Y": 2921.0
             }
         },
         "Sprite": {
@@ -21558,7 +21558,7 @@
             "name": "P2WrongDropOffPoint",
             "tag": 8,
             "subtag": 0,
-            "isActive": false
+            "isActive": true
         },
         "Transform": {
             "scale": {
@@ -21567,8 +21567,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2440.0,
-                "Y": -360.0
+                "X": -2453.0,
+                "Y": -286.0
             }
         },
         "Sprite": {
@@ -21643,8 +21643,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2560.0,
-                "Y": 2980.0
+                "X": -2542.0,
+                "Y": 3011.0
             }
         },
         "Sprite": {
@@ -21668,13 +21668,13 @@
         },
         "Transform": {
             "scale": {
-                "X": 137.5,
+                "X": 132.5,
                 "Y": 150.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -2770.0,
-                "Y": -290.0
+                "X": -2822.0,
+                "Y": -191.0
             }
         },
         "Sprite": {
@@ -21953,7 +21953,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": -580.0,
-                "Y": 1940.0
+                "Y": 1992.0
             }
         },
         "Sprite": {

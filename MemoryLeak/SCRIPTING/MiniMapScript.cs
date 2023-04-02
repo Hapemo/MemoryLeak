@@ -29,7 +29,6 @@ namespace BonVoyage {
         float textScale;
         float textbigScale;
         private float MapX, MapY;
-        private float miniMapX, miniMapY;
         //int i = 1;
         public void Alive(int _ENTITY)
         {
@@ -56,8 +55,6 @@ namespace BonVoyage {
             textbigOffsetY = 360;
             textScale = VI.Text.Scale.Get(minimapID);
             textbigScale = 1.0f;
-            miniMapX = 1244;
-            miniMapY = 700;
 
             big = false;
             VI.MovementAI.SetNext(minimapID, 0);

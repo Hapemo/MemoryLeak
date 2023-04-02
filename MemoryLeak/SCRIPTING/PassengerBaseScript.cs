@@ -262,7 +262,7 @@ namespace BonVoyage {
         VI.ParticleSystem.GenerateOnce(_e);
         fadingOut = !Fading(_e, 300.0f, FADE.OUT);
         if (!fadingOut) { // Just finished fading out
-                    VI.Audio.Play(_e);
+          VI.Audio.Play(_e);
           VI.Transform.Position.SetX(_e, VI.Transform.Position.GetX(playerBoat));
           VI.Transform.Position.SetY(_e, VI.Transform.Position.GetY(playerBoat));
         }
