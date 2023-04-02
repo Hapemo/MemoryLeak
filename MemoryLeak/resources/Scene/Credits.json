@@ -1,20 +1,20 @@
 [
     {
         "General": {
-            "name": "NEW Entity 2",
+            "name": "YJ",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 120.0,
+                "X": 180.0,
                 "Y": 120.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -480.0,
-                "Y": 200.0
+                "X": -403.0,
+                "Y": 175.0
             }
         },
         "Sprite": {
@@ -54,7 +54,7 @@
     },
     {
         "General": {
-            "name": "NEW Entity 1",
+            "name": "BG",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -101,20 +101,20 @@
     },
     {
         "General": {
-            "name": "NEW Entity 2",
+            "name": "Jazz",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 50.0,
+                "X": 45.0,
                 "Y": 85.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -480.0,
-                "Y": 100.0
+                "X": -410.0,
+                "Y": 80.0
             }
         },
         "Sprite": {
@@ -154,20 +154,20 @@
     },
     {
         "General": {
-            "name": "NEW Entity 3",
+            "name": "Joachim",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 50.0,
+                "X": 45.0,
                 "Y": 85.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -480.0,
-                "Y": 0.0
+                "X": -410.0,
+                "Y": -10.0
             }
         },
         "Sprite": {
@@ -207,19 +207,19 @@
     },
     {
         "General": {
-            "name": "NEW Entity 3",
+            "name": "Christy",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 50.0,
+                "X": 45.0,
                 "Y": 85.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": -480.0,
+                "X": -410.0,
                 "Y": -100.0
             }
         },
@@ -260,20 +260,20 @@
     },
     {
         "General": {
-            "name": "NEW Entity 3",
+            "name": "WJ",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 50.0,
+                "X": 45.0,
                 "Y": 85.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 50.0,
-                "Y": 200.0
+                "Y": 175.0
             }
         },
         "Sprite": {
@@ -313,20 +313,20 @@
     },
     {
         "General": {
-            "name": "NEW Entity 3",
+            "name": "JW",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 50.0,
+                "X": 45.0,
                 "Y": 85.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 50.0,
-                "Y": 100.0
+                "Y": 80.0
             }
         },
         "Sprite": {
@@ -366,20 +366,20 @@
     },
     {
         "General": {
-            "name": "NEW Entity 3",
+            "name": "XH",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 70.0,
+                "X": 60.0,
                 "Y": 70.0
             },
             "rotation": 0.0,
             "translation": {
                 "X": 50.0,
-                "Y": 0.0
+                "Y": -10.0
             }
         },
         "Sprite": {
@@ -419,14 +419,14 @@
     },
     {
         "General": {
-            "name": "NEW Entity 3",
+            "name": "Sherylin",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 50.0,
+                "X": 42.0,
                 "Y": 75.0
             },
             "rotation": 0.0,
@@ -565,7 +565,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -470.0,
+                "X": -527.0,
                 "Y": -190.0
             }
         },
@@ -584,7 +584,7 @@
             "fontFile": "BPtypewrite",
             "text": "Faculty and Advisors",
             "offset": {
-                "X": -25.0,
+                "X": -22.0,
                 "Y": 0.0
             },
             "scale": 0.6000000238418579,
@@ -600,7 +600,7 @@
     },
     {
         "General": {
-            "name": "Names",
+            "name": "Elie",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -612,8 +612,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -490.0,
-                "Y": -240.0
+                "X": -133.0,
+                "Y": -213.0
             }
         },
         "Sprite": {
@@ -647,7 +647,7 @@
     },
     {
         "General": {
-            "name": "Names",
+            "name": "JY",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -659,8 +659,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -490.0,
-                "Y": -270.0
+                "X": 350.0,
+                "Y": -213.0
             }
         },
         "Sprite": {
@@ -694,7 +694,7 @@
     },
     {
         "General": {
-            "name": "Names",
+            "name": "Holger",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -706,8 +706,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -490.0,
-                "Y": -300.0
+                "X": 77.0,
+                "Y": -213.0
             }
         },
         "Sprite": {
@@ -741,7 +741,7 @@
     },
     {
         "General": {
-            "name": "Names",
+            "name": "Keh",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -753,7 +753,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -240.0,
+                "X": -133.0,
                 "Y": -240.0
             }
         },
@@ -788,20 +788,20 @@
     },
     {
         "General": {
-            "name": "Names",
+            "name": "Vuk",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 140.0,
-                "Y": 150.0
+                "X": 147.5,
+                "Y": 157.5
             },
             "rotation": 0.0,
             "translation": {
-                "X": -240.0,
-                "Y": -270.0
+                "X": 77.0,
+                "Y": -240.0
             }
         },
         "Sprite": {
@@ -835,7 +835,7 @@
     },
     {
         "General": {
-            "name": "Names",
+            "name": "DigiPen",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -847,8 +847,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -240.0,
-                "Y": -300.0
+                "X": -207.0,
+                "Y": -400.0
             }
         },
         "Sprite": {
@@ -864,12 +864,12 @@
         },
         "Text": {
             "fontFile": "BPtypewrite",
-            "text": "Alwyn Lee",
+            "text": "Created at DigiPen Institute of Technology",
             "offset": {
                 "X": 0.0,
                 "Y": 22.0
             },
-            "scale": 0.5,
+            "scale": 0.3499999940395355,
             "color": {
                 "r": 255,
                 "g": 255,
@@ -882,7 +882,7 @@
     },
     {
         "General": {
-            "name": "Faculty",
+            "name": "President",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -894,102 +894,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": -470.0,
-                "Y": -320.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 0
-            },
-            "sprite": 0,
-            "texture": "",
-            "layer": 8
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "Created at ",
-            "offset": {
-                "X": -25.0,
-                "Y": 0.0
-            },
-            "scale": 0.6000000238418579,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "followCam": false,
-            "width": -221.0
-        }
-    },
-    {
-        "General": {
-            "name": "Names",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 140.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": -490.0,
-                "Y": -370.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 0
-            },
-            "sprite": 0,
-            "texture": "",
-            "layer": 8
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "DigiPen Institute of Technology",
-            "offset": {
-                "X": 0.0,
-                "Y": 22.0
-            },
-            "scale": 0.5,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "followCam": false,
-            "width": -606.0
-        }
-    },
-    {
-        "General": {
-            "name": "Faculty",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 70.0,
-                "Y": -320.0
+                "X": -527.0,
+                "Y": -347.0
             }
         },
         "Sprite": {
@@ -1023,7 +929,7 @@
     },
     {
         "General": {
-            "name": "Names",
+            "name": "Claude",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1035,7 +941,7 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 50.0,
+                "X": -133.0,
                 "Y": -370.0
             }
         },
@@ -1070,54 +976,7 @@
     },
     {
         "General": {
-            "name": "Faculty",
-            "tag": 8,
-            "subtag": 0,
-            "isActive": true
-        },
-        "Transform": {
-            "scale": {
-                "X": 150.0,
-                "Y": 150.0
-            },
-            "rotation": 0.0,
-            "translation": {
-                "X": 70.0,
-                "Y": -190.0
-            }
-        },
-        "Sprite": {
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 0
-            },
-            "sprite": 0,
-            "texture": "",
-            "layer": 8
-        },
-        "Text": {
-            "fontFile": "BPtypewrite",
-            "text": "Executives",
-            "offset": {
-                "X": -25.0,
-                "Y": 0.0
-            },
-            "scale": 0.6000000238418579,
-            "color": {
-                "r": 255,
-                "g": 255,
-                "b": 255,
-                "a": 255
-            },
-            "followCam": false,
-            "width": -221.0
-        }
-    },
-    {
-        "General": {
-            "name": "Names",
+            "name": "Jason",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1129,8 +988,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 350.0,
-                "Y": -210.0
+                "X": -134.0,
+                "Y": -277.0
             }
         },
         "Sprite": {
@@ -1164,7 +1023,7 @@
     },
     {
         "General": {
-            "name": "Names",
+            "name": "Christopher",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1176,8 +1035,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 50.0,
-                "Y": -240.0
+                "X": -134.0,
+                "Y": -333.0
             }
         },
         "Sprite": {
@@ -1211,20 +1070,20 @@
     },
     {
         "General": {
-            "name": "Names",
+            "name": "Michael",
             "tag": 8,
             "subtag": 0,
             "isActive": true
         },
         "Transform": {
             "scale": {
-                "X": 140.0,
-                "Y": 150.0
+                "X": 150.0,
+                "Y": 160.0
             },
             "rotation": 0.0,
             "translation": {
-                "X": 350.0,
-                "Y": -240.0
+                "X": -134.0,
+                "Y": -305.0
             }
         },
         "Sprite": {
@@ -1258,7 +1117,7 @@
     },
     {
         "General": {
-            "name": "Names",
+            "name": "Michele",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1270,8 +1129,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 50.0,
-                "Y": -270.0
+                "X": 77.0,
+                "Y": -277.0
             }
         },
         "Sprite": {
@@ -1305,7 +1164,7 @@
     },
     {
         "General": {
-            "name": "Names",
+            "name": "Raymond",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1318,7 +1177,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 350.0,
-                "Y": -270.0
+                "Y": -277.0
             }
         },
         "Sprite": {
@@ -1352,7 +1211,7 @@
     },
     {
         "General": {
-            "name": "Names",
+            "name": "Prasanna",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1365,7 +1224,7 @@
             "rotation": 0.0,
             "translation": {
                 "X": 350.0,
-                "Y": -300.0
+                "Y": -305.0
             }
         },
         "Sprite": {
@@ -1399,7 +1258,7 @@
     },
     {
         "General": {
-            "name": "Names",
+            "name": "Samir",
             "tag": 8,
             "subtag": 0,
             "isActive": true
@@ -1411,8 +1270,8 @@
             },
             "rotation": 0.0,
             "translation": {
-                "X": 50.0,
-                "Y": -300.0
+                "X": 77.0,
+                "Y": -305.0
             }
         },
         "Sprite": {
@@ -1442,6 +1301,147 @@
             },
             "followCam": false,
             "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Team",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 150.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -51.0,
+                "Y": 233.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "The Team",
+            "offset": {
+                "X": -25.0,
+                "Y": 0.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -221.0
+        }
+    },
+    {
+        "General": {
+            "name": "Alwyn",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 140.0,
+                "Y": 150.0
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 350.0,
+                "Y": -240.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Alwyn Lee",
+            "offset": {
+                "X": 0.0,
+                "Y": 22.0
+            },
+            "scale": 0.5,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -606.0
+        }
+    },
+    {
+        "General": {
+            "name": "Exe",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 162.5,
+                "Y": 162.5
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": -527.0,
+                "Y": -260.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 0,
+            "texture": "",
+            "layer": 8
+        },
+        "Text": {
+            "fontFile": "BPtypewrite",
+            "text": "Executives",
+            "offset": {
+                "X": -25.0,
+                "Y": 0.0
+            },
+            "scale": 0.6000000238418579,
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 255
+            },
+            "followCam": false,
+            "width": -221.0
         }
     }
 ]
