@@ -42922,82 +42922,82 @@
         "Animation": {
             "sheets": [
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\idle\\Character_Region2_Monster_SE_idle_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\idle\\Character_Region3_Monster_SE_idle_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.20000000298023224
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\idle\\Character_Region2_Monster_NE_idle_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\idle\\Character_Region3_Monster_NE_idle_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.20000000298023224
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\idle\\Character_Region2_Monster_NE_idle_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\idle\\Character_Region3_Monster_NE_idle_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.20000000298023224
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\idle\\Character_Region2_Monster_SE_idle_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\idle\\Character_Region3_Monster_SE_idle_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.20000000298023224
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\rise\\Character_Region2_Monster_SW_Rising_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\rise\\Character_Region3_Monster_SW_Rising_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\rise\\Character_Region2_Monster_NW_Rising_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\rise\\Character_Region3_Monster_NW_Rising_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\rise\\Character_Region2_Monster_NE_Rising_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\rise\\Character_Region3_Monster_NE_Rising_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\rise\\Character_Region2_Monster_SE_Rising_spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\rise\\Character_Region3_Monster_SE_Rising_spritesheet.png",
                     "frameCount": 8,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack1\\Character_Region2_Monster_SW_Attack1_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack1\\Character_Region3_Monster_SW_Attack1_Spritesheet.png",
                     "frameCount": 10,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack1\\Character_Region2_Monster_NW_Attack1_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack1\\Character_Region3_Monster_NW_Attack1_Spritesheet.png",
                     "frameCount": 10,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack1\\Character_Region2_Monster_NE_Attack1_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack1\\Character_Region3_Monster_NE_Attack1_Spritesheet.png",
                     "frameCount": 10,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack1\\Character_Region2_Monster_SE_Attack1_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack1\\Character_Region3_Monster_SE_Attack1_Spritesheet.png",
                     "frameCount": 10,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack2\\Character_Region2_Monster_SW_Attack2_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack2\\Character_Region3_Monster_SW_Attack2_Spritesheet.png",
                     "frameCount": 12,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack2\\Character_Region2_Monster_NW_Attack2_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack2\\Character_Region3_Monster_NW_Attack2_Spritesheet.png",
                     "frameCount": 12,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack2\\Character_Region2_Monster_NE_Attack2_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack2\\Character_Region3_Monster_NE_Attack2_Spritesheet.png",
                     "frameCount": 12,
                     "timePerFrame": 0.10000000149011612
                 },
                 {
-                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack2\\Character_Region2_Monster_SE_Attack2_Spritesheet.png",
+                    "sheet": "Textures\\Spritesheets\\MONSTER\\attack2\\Character_Region3_Monster_SE_Attack2_Spritesheet.png",
                     "frameCount": 12,
                     "timePerFrame": 0.10000000149011612
                 }
