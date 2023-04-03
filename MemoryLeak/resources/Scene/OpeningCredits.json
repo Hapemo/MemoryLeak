@@ -427,5 +427,98 @@
                 }
             ]
         }
+    },
+    {
+        "General": {
+            "name": "memoryleak",
+            "tag": 8,
+            "subtag": 0,
+            "isActive": true
+        },
+        "Transform": {
+            "scale": {
+                "X": 303.0,
+                "Y": 178.3053741455078
+            },
+            "rotation": 0.0,
+            "translation": {
+                "X": 650.0,
+                "Y": -360.0
+            }
+        },
+        "Sprite": {
+            "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 0
+            },
+            "sprite": 2,
+            "texture": "Textures\\Menu\\memory-leak-white.png",
+            "layer": 1
+        },
+        "ColorAI": {
+            "run": true,
+            "next": true,
+            "loop": false,
+            "reverse": false,
+            "cycle": false,
+            "nextStep": 1,
+            "acceleration": 0.0,
+            "spriteORtext": 0,
+            "changeOnHover": false,
+            "changeOnCollide": false,
+            "changeR": false,
+            "changeG": false,
+            "changeB": false,
+            "changeA": true,
+            "targets": [
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 0
+                    }
+                },
+                {
+                    "time": 3.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 0
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 255
+                    }
+                },
+                {
+                    "time": 1.0,
+                    "color": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 0
+                    }
+                }
+            ]
+        }
     }
 ]
