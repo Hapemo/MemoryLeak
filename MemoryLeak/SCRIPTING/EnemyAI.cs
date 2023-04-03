@@ -15,23 +15,10 @@ namespace BonVoyage
 {
     public class EnemyAI : BaseScript
     {
-        //private float HealSpeed = 1f;
-        //private float HealCounter;
-        //private float HitSpeed = 0.5f;
-        //private float HitInterval;
-        //private float HitAnimationCounter;
-        //private float HitCounter;
         private const int HitMax = 11;
-
         static public bool EnemyActivated = false;
-        //private float EnemySpeed = 2.2f;
-        //private float EnemyCurrentSpeed;
-        //private int ChasingIndex = 0;
         private float RightAngle = (float)VI.Math.Pi() / 2;
-
-        //private int HitTaken = 0;
         bool takingDamage = false;
-        //private float eDirection = 0;
         private EnemyState eState = EnemyState.IDLE;
         private int PlayerId;
         private int EnemyId;
@@ -144,9 +131,6 @@ namespace BonVoyage
                     }
                 }
             }
-
-           
-
         }
 
         public void FixedUpdate(int _ENTITY)
@@ -190,7 +174,6 @@ namespace BonVoyage
                 else
                     takingDamage = false;
             }
-
         }
 
         public void LateUpdate(int _ENTITY)
@@ -233,41 +216,6 @@ namespace BonVoyage
             }
             else return false;
         }
-
-        //private float GetSpeed(float _x, float _y)
-        //{
-        //    return VI.Math.Magnitude(_x, _y) * (float)VI.General.DeltaTime() * 100f * EnemyCurrentSpeed;
-        //}
-
-        //private void ChasePlayer(float _x, float _y)
-        //{
-        //    // First attack, enemy still in idle mode
-        //    if (OctopusState == EnemyState.IDLE)
-        //    {
-        //        VI.Audio.PlayBGM("MonsterChase_BGM");
-        //        OctopusState = EnemyState.RISING;
-        //        THIS.Animation.SpriteSheet.CurrentFrame.Set(0);
-        //    }
-        //    else if (OctopusState == EnemyState.RISING &&
-        //        THIS.Animation.SpriteSheet.CurrentFrame.Get() == THIS.Animation.SpriteSheet.FrameCount.Get() - 1)
-        //    {
-        //        HitInterval = THIS.Animation.SpriteSheet.Speed.Get() * THIS.Animation.SpriteSheet.FrameCount.Get() * (float)VI.General.DeltaTime() * 100f;
-        //        THIS.Animation.SpriteSheet.CurrentFrame.Set(0);
-        //        Random rand = new Random();
-        //        OctopusState = (rand.Next(0, 2) == 0 ? EnemyState.ATTACK1 : EnemyState.ATTACK2);
-        //    }
-        //    UpdateTransform(OctopusState);
-        //    UpdateSpeed(GetSpeed(_x, _y));
-        //}
-
-        
-
-        //private void UpdateSpeed(float _speed)
-        //{
-        //    THIS.MovementAI.Edit.Timing(_speed);
-        //    THIS.MovementAI.Edit.CurrentTiming(_speed);
-        //}
-
         private float GetDistance(float _x, float _y, Axis _axis)
         {
             float xDis = _x - THIS.Transform.Position.GetX();
