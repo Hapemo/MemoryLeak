@@ -1,11 +1,11 @@
 ﻿/*!*****************************************************************************
-\file PlayerScriptMenu.cs
-\author Chen Jia Wen
-\par DP email: c.jiawen\@digipen.edu
+\file GameOver.cs
+\author Lee Hsien Wei, Joachim
+\par DP email: l.hsienweijoachim@digipen.edu
 \par Group: Memory Leak Studios
-\date 10-03-2023
+\date 04-03-2023
 \brief
-The base script for all the script that will be made
+GameOver script that handles the change in game over scene after player dies and is deactivated
 *******************************************************************************/
 using System;
 using System.Runtime.CompilerServices;

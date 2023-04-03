@@ -90,8 +90,8 @@ Function will run on initialisation of the entity.
 void FPSPrintScript::Init(Entity const& _e) {
 	(void)_e;
 	//LOG_INFO("How to Play button script starts works!!!");
-	//VI::iLightSource::SetSpriteColor(_e, 0, 0, 0, 0);
-	//VI::iText::UpdateText(_e, "");
+	VI::iSprite::SetColor(_e, 0, 0, 0, 0);
+	VI::iText::UpdateText(_e, "");
 }
 
 /*!*****************************************************************************
@@ -117,7 +117,7 @@ void FPSPrintScript::Update(Entity const& _e) {
 
 	std::stringstream str;
 	str << std::fixed << std::setprecision(1) << FPSManager::fps;
-	VI::iText::UpdateText("fpsDisplay", "", str.str());
+	//VI::iText::UpdateText("fpsDisplay", "", str.str());
 }
 
 /*!*****************************************************************************

@@ -182,20 +182,9 @@
     },
     {
         "SceneName": "Game Over",
-        "Transform": {
-            "scale": {
-                "X": 1600.0,
-                "Y": 900.0
-            },
-            "rotation": 1.0,
-            "translation": {
-                "X": -154.19091796875,
-                "Y": 2276.108642578125
-            }
-        },
         "isActive": true,
         "mForceRender": false,
-        "layer": 0,
+        "layer": 10,
         "order": 0
     }
 ]
